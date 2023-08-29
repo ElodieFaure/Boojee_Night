@@ -1,0 +1,12 @@
+<p>Créer Bar</p>
+
+<%= simple_form_for [:barman, @bar] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :category %>
+  <%= f.input :description %>
+  <%= f.input :average_price %>
+  <%= f.input :open_at %>
+  <%= f.input :close_at %>
+  <%= f.submit %>
+<% end %>
