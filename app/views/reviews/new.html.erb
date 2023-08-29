@@ -1,0 +1,12 @@
+<h1>Reviews#new</h1>
+<p>Find me in app/views/reviews/new.html.erb</p>
+
+<%= simple_form_for [@booking, @review] do |f| %>
+<%= f.input :content,
+            as: :text,
+            label: "Commentaire"%>
+<%= f.input :rating,
+            as: :integer,
+            label: "Note (entre 0 et 5)" %>
+<%= f.submit 'Soumettre mon commentaire', class:"button" %>
+<% end %>

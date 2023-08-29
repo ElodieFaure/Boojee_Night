@@ -1,0 +1,4 @@
+<h1>Promotions#show</h1>
+<p>Find me in app/views/promotions/show.html.erb</p>
+<%= @promotion.name %>
+<%= button_to 'Réserver', promotion_bookings_path(@promotion), method: :post, class: 'button' %>
