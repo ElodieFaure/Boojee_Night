@@ -43,7 +43,7 @@
     <ul class="review-list">
       <% @bar.reviews.each do |review| %>
         <li class="review-item">
-          <p><%= @review.content %></p>
+          <p><%= review.content %></p>
           <p class="rating"><strong>Évaluation :</strong> <%= review.rating %></p>
         </li>
       <% end %>
