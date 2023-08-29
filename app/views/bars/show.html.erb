@@ -1,0 +1,13 @@
+<p>show du bar</p>
+<h1><%= @bar.name %></h1>
+
+<p>index des promos du bar</p>
+<% @promos.each do |promo| %>
+<%= link_to promo.name, bar_promotion_path(promo.bar, promo) %>
+<% end %>
+
+<p>index des reviews du bar</p>
+<% @bar.reviews.each do |review| %>
+<%= review.content %>
+<%= review.rating %>
+<% end %>

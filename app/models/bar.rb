@@ -2,6 +2,8 @@ class Bar < ApplicationRecord
   belongs_to :user
   has_many :promotions, dependent: :destroy
   has_many :bar_tags, dependent: :destroy
+  has_many :bookings, through: :promotions
+  has_many :reviews, through: :bookings
 
   validates :name, presence: true
   validates :address, presence: true

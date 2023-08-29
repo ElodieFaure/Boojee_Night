@@ -1,0 +1,3 @@
+<h2><%= @bar.name %></h2>
+<p><%= @bar.address %></p>
+<p><%= link_to "Supprimer Bar", barman_bar_path(@bar), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
