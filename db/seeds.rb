@@ -7,10 +7,13 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-Bar.destroy_all
-User.destroy_all
+Review.destroy_all
+Promotion.destroy_all
+BarTag.destroy_all
 Booking.destroy_all
 Tag.destroy_all
+Bar.destroy_all
+User.destroy_all
 
 paul = User.create!(first_name: "Paul", last_name: "dupont", email: "paul@bla.com", password: "azerty", category: "bar")
 jacques = User.create!(first_name: "Jacques", last_name: "Martin", email: "jacques@bla.com", password: "azerty", category: "bar")
