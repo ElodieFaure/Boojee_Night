@@ -4,11 +4,14 @@ Rails.application.routes.draw do
 
   resources :bars, only:[:index, :show] do
     resources :promotions, only: [:show] do
-      resources :bookings, only: [:index, :create, :destroy] do
-        resources :reviews, only: [:new, :create]
-      end
+      resources :bookings, only: [:create]
     end
   end
+
+  resources :bookings, only: [:index, :destroy] do
+    resources :reviews, only: [:new, :create]
+  end
+
   namespace :barman do
     resources :bars do
       resources :promotions, only: [:new, :create, :edit, :update, :destroy] do
