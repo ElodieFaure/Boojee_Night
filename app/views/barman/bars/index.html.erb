@@ -1,0 +1,9 @@
+<p>INDEX</p>
+
+<ul>
+  <% @bars.each do |bar| %>
+    <li><%= link_to bar.name, barman_bar_path(bar) %></li>
+  <% end %>
+</ul>
+
+<button class= "button"><%= link_to "Create", new_barman_bar_path %></button>
