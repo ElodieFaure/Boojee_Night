@@ -1,7 +1,7 @@
 class Bar < ApplicationRecord
   belongs_to :user
-  has_many :promotions
-  has_many :bar_tags
+  has_many :promotions, dependent: :destroy
+  has_many :bar_tags, dependent: :destroy
 
   validates :name, presence: true
   validates :address, presence: true
