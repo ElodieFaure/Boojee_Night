@@ -1,0 +1,7 @@
+<h1>Bookings#index</h1>
+<p>Find me in app/views/bookings/index.html.erb</p>
+<% @bookings.each do |booking| %>
+<%= booking.promotion.name%>
+<%= link_to '🗑', booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "êtes-vous sûr?"}  %>
+<%= link_to '📝', new_booking_review_path(booking)  %>
+<% end %>

@@ -1,7 +1,9 @@
 require "test_helper"
 
 class PromotionsControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+
+  test "should get show" do
+    get promotions_show_url
+    assert_response :success
+  end
 end
