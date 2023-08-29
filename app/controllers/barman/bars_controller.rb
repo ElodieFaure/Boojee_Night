@@ -7,6 +7,7 @@ module Barman
 
     def show
       @bar = Bar.find(params[:id])
+      @promos = @bar.promotions
     end
 
     def new
@@ -19,6 +20,16 @@ module Barman
       if @bar.save
         redirect_to barman_bars_path, notice: 'Bar was successfully created'
       end
+    end
+
+    def edit
+      @bar = Bar.find(params[:id])
+    end
+
+    def update
+      @bar = Bar.find(params[:id])
+      @bar.update(bar_params)
+      redirect_to barman_bar_path(@bar), notice: 'Bar was successfully updated'
     end
 
     def destroy

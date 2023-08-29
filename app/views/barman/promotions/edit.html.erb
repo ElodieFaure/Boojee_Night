@@ -1,0 +1,9 @@
+<p>Editer la promotions</p>
+
+<%= simple_form_for [:barman, @bar, @promotion] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :offer %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit %>
+<% end %>
