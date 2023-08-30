@@ -12,6 +12,7 @@
   <h6><%= f.input :average_price, input_html: { class: "custom-box-shadow" } %></h6>
   <h6><%= f.input :open_at, input_html: { class: "custom-box-shadow" } %></h6>
   <h6><%= f.input :close_at, input_html: { class: "custom-box-shadow" } %></h6>
+   <%= f.input :photos, as: :file, input_html: { multiple: true }%>
   <h6><%= f.submit "Créer votre Bar", class:"navbar_button"%>
   </div>
 </div>
