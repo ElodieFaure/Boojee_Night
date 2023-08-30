@@ -15,4 +15,5 @@ class BarsController < ApplicationController
     @bar = Bar.find(params[:id])
     @promos = @bar.promotions
   end
+
 end

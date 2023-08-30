@@ -37,11 +37,13 @@ module Barman
       @bar.destroy
       redirect_to barman_bars_path, status: :see_other
     end
+
+    private
+
+    def bar_params
+      params.require(:bar).permit(:name, :brand, :address, :category, :description, :average_price, :open_at, :close_at, photos: [])
+    end
   end
-end
 
-private
 
-def bar_params
-  params.require(:bar).permit(:name, :address, :category, :description, :average_price, :open_at, :close_at)
 end
