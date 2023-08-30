@@ -19,9 +19,9 @@ paul = User.create!(first_name: "Paul", last_name: "dupont", email: "paul@bla.co
 jacques = User.create!(first_name: "Jacques", last_name: "Martin", email: "jacques@bla.com", password: "azerty", category: "bar")
 etienne = User.create!(first_name: "etienne", last_name: "benani", email: "etienneb@bla.com", password: "azerty", category: "client")
 
-bar_1 = Bar.create!(name: "Bar 1", address: "Bordeaux", category: "pub", description: "lorem", average_price: 10, open_at: "8:00", close_at: "17:00", user_id: paul.id)
-bar_2 = Bar.create!(name: "Bar 2", address: "Lyon", category: "Salon de thé", description: "lorem", average_price: 7, open_at: "9:00", close_at: "19:00", user_id: etienne.id )
-bar_3 = Bar.create!(name: "Bar 3", address: "Paris", category: "pmu", description: "lorem", average_price: 4, open_at: "9:00", close_at: "19:00", user_id: paul.id )
+bar_1 = Bar.create!(name: "Bar 1", address: "54 Cours Georges Clemenceau, 33000 Bordeaux", category: "pub", description: "lorem", average_price: 10, open_at: "8:00", close_at: "17:00", user_id: paul.id)
+bar_2 = Bar.create!(name: "Bar 2", address: "16 Rue Auguste Comte, 69002 Lyon", category: "Salon de thé", description: "lorem", average_price: 7, open_at: "9:00", close_at: "19:00", user_id: etienne.id )
+bar_3 = Bar.create!(name: "Bar 3", address: "87 Rue Lamarck, 75018 Paris", category: "pmu", description: "lorem", average_price: 4, open_at: "9:00", close_at: "19:00", user_id: paul.id )
 
 promo_1 = Promotion.create!(name: "Dingue", offer: "-20%", start_date: "20/02/2023", end_date: "20/03/2023", bar_id: bar_2.id)
 promo_2 = Promotion.create!(name: "Whoua", offer: "-20%", start_date: "20/02/2023", end_date: "20/03/2023", bar_id: bar_1.id)
