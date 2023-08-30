@@ -3,7 +3,9 @@
 <ul>
   <% @bars.each do |bar| %>
     <li><%= link_to bar.name, barman_bar_path(bar) %></li>
+    <p><%= link_to "Supprimer Bar", barman_bar_path(bar), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
   <% end %>
 </ul>
+
 
 <button class= "button"><%= link_to "Create", new_barman_bar_path %></button>

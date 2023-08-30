@@ -13,4 +13,7 @@ class Bar < ApplicationRecord
   validates :average_price, presence: true
   validates :open_at, presence: true
   validates :close_at, presence: true
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end
