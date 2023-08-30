@@ -7,6 +7,7 @@ module Barman
 
     def show
       @bar = Bar.find(params[:id])
+      @promos = @bar.promotions
     end
 
     def new
@@ -27,16 +28,26 @@ module Barman
       end
     end
 
+    def edit
+      @bar = Bar.find(params[:id])
+    end
+
+    def update
+      @bar = Bar.find(params[:id])
+      @bar.update(bar_params)
+      redirect_to barman_bar_path(@bar), notice: 'Votre bar a été modifié avec succès !'
+    end
+
     def destroy
       @bar = Bar.find(params[:id])
       @bar.destroy
       redirect_to barman_bars_path, status: :see_other
     end
+
+    private
+
+    def bar_params
+      params.require(:bar).permit(:name, :brand, :address, :category, :description, :average_price, :open_at, :close_at, photos: [], tag_ids: [])
+    end
   end
-end
-
-private
-
-def bar_params
-  params.require(:bar).permit(:name, :address, :category, :description, :average_price, :open_at, :close_at, tag_ids: [])
 end

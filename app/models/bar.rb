@@ -7,6 +7,8 @@ class Bar < ApplicationRecord
   has_many :bookings, through: :promotions
   has_many :reviews, through: :bookings
   has_many :tags, through: :bar_tags
+  has_many_attached :photos
+
 
   validates :name, presence: true
   validates :address, presence: true
