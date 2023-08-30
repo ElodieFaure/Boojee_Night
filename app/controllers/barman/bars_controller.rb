@@ -17,8 +17,14 @@ module Barman
     def create
       @bar = Bar.new(bar_params)
       @bar.user_id = current_user.id
-      if @bar.save
-        redirect_to barman_bars_path, notice: 'Votre bar a été crée avec succès !'
+      if @bar.save && params[:tags_ids].present?
+        @tags = Tag.where(params[:tag_ids])
+        @tags.each do |tag|
+          BarTag.new(bar: @bar, tag: tag)
+        end
+        redirect_to barman_bars_path, notice: 'Bar was successfully created'
+      else
+        render "barman/new", status: :unprocessable_entity
       end
     end
 
@@ -41,9 +47,7 @@ module Barman
     private
 
     def bar_params
-      params.require(:bar).permit(:name, :brand, :address, :category, :description, :average_price, :open_at, :close_at, photos: [])
+      params.require(:bar).permit(:name, :brand, :address, :category, :description, :average_price, :open_at, :close_at, photos: [], tag_ids: [])
     end
   end
-
-
 end

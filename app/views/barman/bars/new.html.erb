@@ -1,12 +1,17 @@
 <div class="page-container" >
 <div class="formulary-card">
 <%= simple_form_for [:barman, @bar] do |f| %>
+
 <div class="d-flex">
 <div class="left-col">
  <h6><%= f.input :name, input_html: { class: "custom-box-shadow" } %></h6>
   <h6><%= f.input :address, input_html: { class: "custom-box-shadow" } %></h6>
   <h6><%= f.input :category, input_html: { class: "custom-box-shadow" } %></h6>
   <h6><%= f.input :description, input_html: { class: "custom-box-shadow" } %></h6>
+    <%= f.association :tags, as: :check_boxes,
+                    include_hidden: false,
+                    input_html: { class: "tag-selector" },
+                  item_wrapper_class: 'tag-item' %>
   </div>
   <div class="right-col">
   <h6><%= f.input :average_price, input_html: { class: "custom-box-shadow" } %></h6>
