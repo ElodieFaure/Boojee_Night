@@ -1,13 +1,21 @@
-<p>Créer Bar</p>
-
+<div class="page-container" >
+<div class="formulary-card">
 <%= simple_form_for [:barman, @bar] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>
-  <%= f.input :category %>
-  <%= f.input :description %>
-  <%= f.input :average_price %>
-  <%= f.input :open_at %>
-  <%= f.input :close_at %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true }%>
-  <%= f.submit %>
+<div class="d-flex">
+<div class="left-col">
+ <h6><%= f.input :name, input_html: { class: "custom-box-shadow" } %></h6>
+  <h6><%= f.input :address, input_html: { class: "custom-box-shadow" } %></h6>
+  <h6><%= f.input :category, input_html: { class: "custom-box-shadow" } %></h6>
+  <h6><%= f.input :description, input_html: { class: "custom-box-shadow" } %></h6>
+  </div>
+  <div class="right-col">
+  <h6><%= f.input :average_price, input_html: { class: "custom-box-shadow" } %></h6>
+  <h6><%= f.input :open_at, input_html: { class: "custom-box-shadow" } %></h6>
+  <h6><%= f.input :close_at, input_html: { class: "custom-box-shadow" } %></h6>
+   <%= f.input :photos, as: :file, input_html: { multiple: true }%>
+  <h6><%= f.submit "Créer votre Bar", class:"navbar_button"%>
+  </div>
+</div>
 <% end %>
+</div>
+</div>
