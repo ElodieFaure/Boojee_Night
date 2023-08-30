@@ -4,6 +4,7 @@ class Bar < ApplicationRecord
   has_many :bar_tags, dependent: :destroy
   has_many :bookings, through: :promotions
   has_many :reviews, through: :bookings
+  has_many_attached :photos
 
   validates :name, presence: true
   validates :address, presence: true
@@ -12,5 +13,4 @@ class Bar < ApplicationRecord
   validates :average_price, presence: true
   validates :open_at, presence: true
   validates :close_at, presence: true
-
 end

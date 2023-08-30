@@ -1,15 +1,78 @@
+/* Votre CSS existant */
 .bar-card-show {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 10px;
-}
 
-.bar-info {
-  flex: 1; /* Permet au contenu de prendre toute la largeur disponible */
-  padding-right: 20px; /* Espace entre le contenu et le bord droit */
+
+
+  .bar-info {
+    flex: 1;
+    padding-right: 20px;
+    border-top: 1px solid #EC407A;
+
+    h1, h3 {
+      margin-top: 0;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 10px;
+        strong {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .bar-info-photo {
+    padding-right: 20px;
+    border-top: 1px solid #EC407A;
+
+    h1, h3 {
+      margin-top: 0;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 10px;
+        strong {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .review-list {
+    list-style-type: none;
+    padding: 0;
+
+    .review-item {
+      padding: 10px;
+      border: 1px solid #ddd;
+      margin-bottom: 15px;
+      background-color: #fff;
+
+      p {
+        margin: 0;
+        &:last-child {
+          margin-top: 10px;
+        }
+      }
+      .rating {
+        color: #EC407A;
+      }
+    }
+  }
 }
