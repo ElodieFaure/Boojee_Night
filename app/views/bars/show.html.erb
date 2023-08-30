@@ -30,21 +30,31 @@
     </div>
   </div>
 
-  <div class="bar-info">
-    <h3>Promotions en cours</h3>
-    <ul>
-      <% @promos.each do |promo| %>
-        <li><%= link_to promo.name, bar_promotion_path(promo.bar, promo) %></li>
-      <% end %>
-    </ul>
+  <div class="bar-info row justify-content-around m-3 p-3">
+      <h3 class=>Promotions en cours</h3>
+      <div class="d-flex justify-content-center">
+          <% @promos.each do |promo| %>
+              <div class="promo-card mx-3">
+                  <h6><%= promo.name %></h6>
+                  <p><%= promo.offer %></p>
+                  <p>du : <%= promo.start_date %></p>
+                  <p>au : <%= promo.end_date %></p>
+                  <div class="mt-auto d-flex justify-content-center">
+                  <%= link_to "Reserver", bar_promotion_path(promo.bar, promo), class: "button" %>
+                  </div>
+              </div>
+          <% end %>
+      </div>
   </div>
+
+
   <div class="bar-info">
     <h3>Commentaires</h3>
     <ul class="review-list">
       <% @bar.reviews.each do |review| %>
         <li class="review-item">
           <p><%= review.content %></p>
-          <p class="rating"><strong>Évaluation :</strong> <%= review.rating %></p>
+          <p class="rating"><strong>Évaluation :</strong> <%= review.rating %> / 5</p>
         </li>
       <% end %>
     </ul>

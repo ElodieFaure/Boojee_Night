@@ -18,7 +18,7 @@ module Barman
       @bar = Bar.new(bar_params)
       @bar.user_id = current_user.id
       if @bar.save
-        redirect_to barman_bars_path, notice: 'Bar was successfully created'
+        redirect_to barman_bars_path, notice: 'Votre bar a été crée avec succès !'
       end
     end
 
@@ -29,7 +29,7 @@ module Barman
     def update
       @bar = Bar.find(params[:id])
       @bar.update(bar_params)
-      redirect_to barman_bar_path(@bar), notice: 'Bar was successfully updated'
+      redirect_to barman_bar_path(@bar), notice: 'Votre bar a été modifié avec succès !'
     end
 
     def destroy
