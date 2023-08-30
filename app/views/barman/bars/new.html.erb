@@ -5,6 +5,10 @@
   <%= f.input :address %>
   <%= f.input :category %>
   <%= f.input :description %>
+  <%= f.association :tags, as: :check_boxes,
+                    include_hidden: false,
+                    input_html: { class: "tag-selector" },
+                  item_wrapper_class: 'tag-item' %>
   <%= f.input :average_price %>
   <%= f.input :open_at %>
   <%= f.input :close_at %>

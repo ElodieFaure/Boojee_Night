@@ -1,13 +1,27 @@
-<h1>Bars#index</h1>
-<p>Find me in app/views/bars/index.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/5490965/pexels-photo-5490965.jpeg?cs=srgb&dl=pexels-rachel-claire-5490965.jpg&fm=jpg);">
+  <div class="container">
+    <h1>Boojee Night, partenaire de vos sorties.</h1>
+    <p>Trouvez les meilleures offres autour de vous </p>
+      <div class="search-form-control form-group">
+        <%= simple_form_for :search, url: bars_path , :method => :get do |f| %>
+            <%= f.input :query,
+                        class: "form-control",
+                        placeholder: "Entrez une adresse, ville ou code postal"%>
+            <%= f.input :tags, collection: Tag.all, as: :check_boxes,
+                    include_hidden: false,
+                    input_html: { class: "tag-selector" },
+                  item_wrapper_class: 'tag-item' %>
+            <%= f.submit "Search", class: "button" %>
+        <% end %>
+      </div>
+  </div>
+</div>
+
+
 <div class="container text-center">
  <div class="row">
     <div class="col col-lg-6">
       <% @bars.each do |bar| %>
-        <p>
-
-        </p>
-
           <div class="bar-card">
             <img src="https://toitoimontoit.fr/wp-content/uploads/2020/02/barabulles-2.jpg" class="bar-card-img" alt="bar-pitcure">
               <div class="bar-details">
@@ -19,7 +33,7 @@
                 </div>
                 <div class="bar-card-flex">
                   <h2 class="bar-name"><strong><%= link_to bar.name, bar_path(bar)  %></strong></h2>
-                  <h2 class="rating"><%= bar.reviews.last.rating %>/5</h2>
+                  <%# <h2 class="rating"><%= bar.reviews.last.rating/5</h2> %>
                 </div>
                   <p class="adress"><%= bar.address %></p>
                   <p class="average-price">Prix moyen : <%= bar.average_price %>€</p>
@@ -30,8 +44,8 @@
             </div>
               <% end %>
             </div>
-    <div class="col col-lg-6">
-      <div style="width: 100%; height: 600px;"
+    <div class="col col-lg-6" class="sticky">
+      <div id="map" style="width: 100%; height: 100vh;"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
