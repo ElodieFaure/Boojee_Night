@@ -1,6 +1,18 @@
 class BookingsController < ApplicationController
   def index
     @bookings = Booking.where(user: current_user)
+    if params[:sort] == "start-asc"
+      @bookings = @bookings.order_start_by_asc
+    end
+    if params[:sort] == "start-desc"
+      @bookings = @bookings.order_start_by_desc
+    end
+    if params[:sort] == "end-asc"
+      @bookings = @bookings.order_end_by_asc
+    end
+    if params[:sort] == "end-asc"
+      @bookings = @bookings.order_end_by_desc
+    end
   end
 
   def create

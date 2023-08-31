@@ -1,7 +1,31 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
-<% @bookings.each do |booking| %>
-<%= booking.promotion.name%>
-<%= link_to '🗑', booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "êtes-vous sûr?"}  %>
-<%= link_to '📝', new_booking_review_path(booking)  %>
-<% end %>
+<div class="container">
+  <h1>Vos réservations</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Promotion</th>
+        <th scope="col">Bar</th>
+        <th scope="col">Début <%= link_to '△', :sort => "start-asc" %> <%= link_to '▽', :sort => "start-desc" %> </th>
+        <th scope="col">Fin <%= link_to '△', :sort => "end-asc" %> <%= link_to '▽', :sort => "end-desc" %></th>
+        <th scope="col">Status</th>
+        <th scope="col">Annuler</th>
+        <th scope="col">Commenter</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bookings.each do |booking| %>
+        <tr>
+          <th scope="row"></th>
+          <td><%= booking.promotion.name%></td>
+          <td><%= booking.promotion.bar.name%></td>
+          <td><%= booking.promotion.start_date%></td>
+          <td><%= booking.promotion.end_date%></td>
+          <td><%= booking.qr_progress%></td>
+          <td><%= link_to '🗑', booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "êtes-vous sûr?"}  %></td>
+          <td><%= link_to '📝', new_booking_review_path(booking)  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

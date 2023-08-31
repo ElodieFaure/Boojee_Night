@@ -18,7 +18,7 @@
             <%= link_to "Bars", "#", class: "nav-link" %>
           </li>
          <a href="#" class="nav-link" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= current_user.first_name %> <%= current_user.last_name %>
+          <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>
           </a>
 
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
