@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  get 'reviews/new'
   devise_for :users
   root to: "pages#home"
 
   resources :bars, only:[:index, :show] do
     resources :promotions, only: [:show]
-
   end
+
   resources :promotions, only: [:destroy] do
     resources :bookings, only: [:create]
   end

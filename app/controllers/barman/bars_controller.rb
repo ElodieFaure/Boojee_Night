@@ -17,14 +17,14 @@ module Barman
     def create
       @bar = Bar.new(bar_params)
       @bar.user_id = current_user.id
-      if @bar.save && params[:tags_ids].present?
-        @tags = Tag.where(params[:tag_ids])
+      if @bar.save && params[:bar][:tag_ids].present?
+        @tags = Tag.where(id: params[:bar][:tag_ids])
         @tags.each do |tag|
           BarTag.new(bar: @bar, tag: tag)
         end
         redirect_to barman_bars_path, notice: 'Bar was successfully created'
       else
-        render "barman/new", status: :unprocessable_entity
+        render "barman/bars/new", status: :unprocessable_entity
       end
     end
 
