@@ -1,4 +1,6 @@
 .page-container {
+  background-image: url(https://res.cloudinary.com/dci4n2kgm/image/upload/v1693489178/Cocktail_Hour_pku1al.jpg);
+  background-position: center;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -8,14 +10,10 @@
 .title-box {
   position: relative;
   background-position: center;
-  // background-image: url("https://res.cloudinary.com/dci4n2kgm/image/upload/v1693401996/wp1898995-vice-city-wallpapers_1_w9uakh.jpg");
   object-fit: cover;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  // border: solid 0.10rem;
-  // border-radius: 3px;
-  // box-shadow: 12px 12px 2px 1px rgba(67, 145, 209, 1);
   width: 500px;
   height: 200px;
   margin-top: 3em;
