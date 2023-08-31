@@ -1,3 +1,17 @@
 <h2><%= @bar.name %></h2>
 <p><%= @bar.address %></p>
-<p><%= link_to "Supprimer Bar", barman_bar_path(@bar), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+
+<%= link_to "New Promotion",  new_barman_bar_promotion_path(@bar), class:"button" %>
+
+<p>index des promos de mon bar</p>
+<ul>
+<% @promos.each do |promo| %>
+<li>Promotion <%= promo.id %>: <%= promo.name %></li>
+<%= link_to "Edit Promotion",  edit_barman_bar_promotion_path(@bar, promo), class:"button" %>
+<%= link_to "Supprimer promotion", barman_bar_promotion_path(@bar, promo), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<% end %>
+</ul>
+
+
+<%= link_to "Edit Bar Barman",  edit_barman_bar_path(@bar), class:"button" %>
+<%= link_to "bar index Barman",  barman_bars_path, class:"button" %>

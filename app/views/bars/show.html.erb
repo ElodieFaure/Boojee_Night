@@ -1,13 +1,62 @@
-<p>show du bar</p>
-<h1><%= @bar.name %></h1>
+<div class="bar-card-show p-3 m-3">
+  <div class="row mb-3">
+    <h1><%= @bar.name %></h1>
+    <p><%= @bar.address %></p>
 
-<p>index des promos du bar</p>
-<% @promos.each do |promo| %>
-<%= link_to promo.name, bar_promotion_path(promo.bar, promo) %>
-<% end %>
+    <div id="carouselExampleIndicators" class="carousel slide col-4" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <% @bar.photos.each do |photo| %>
+        <div class="carousel-item active">
+          <%= cl_image_tag photo.key, :width => 300, :crop => "pad", class: 'd-block w-100', style: 'height: 300px; object-fit: cover;' %>
+        </div>
+        <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <div class="col-8">
+      <ul><h3>Informations</h3>
+        <li><strong>Catégorie :</strong> <%= @bar.category %></li>
+        <li><strong>Description :</strong> <%= @bar.description %></li>
+        <li><strong>Prix moyen :</strong> <%= @bar.average_price %> €</li>
+        <li><strong>Heures d'ouverture :</strong> <%= @bar.open_at %> - <%= @bar.close_at %></li>
+      </ul>
+    </div>
+  </div>
 
-<p>index des reviews du bar</p>
-<% @bar.reviews.each do |review| %>
-<%= review.content %>
-<%= review.rating %>
-<% end %>
+  <div class="bar-info row justify-content-around m-3 p-3">
+      <h3 class=>Promotions en cours</h3>
+      <div class="d-flex justify-content-center">
+          <% @promos.each do |promo| %>
+              <div class="promo-card mx-3">
+                  <h6><%= promo.name %></h6>
+                  <p><%= promo.offer %></p>
+                  <p>du : <%= promo.start_date %></p>
+                  <p>au : <%= promo.end_date %></p>
+                  <div class="mt-auto d-flex justify-content-center">
+                  <%= link_to "Reserver", bar_promotion_path(promo.bar, promo), class: "button" %>
+                  </div>
+              </div>
+          <% end %>
+      </div>
+  </div>
+
+
+  <div class="bar-info">
+    <h3>Commentaires</h3>
+    <ul class="review-list">
+      <% @bar.reviews.each do |review| %>
+        <li class="review-item">
+          <p><%= review.content %></p>
+          <p class="rating"><strong>Évaluation :</strong> <%= review.rating %> / 5</p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

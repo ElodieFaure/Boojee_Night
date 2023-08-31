@@ -7,6 +7,7 @@ module Barman
 
     def show
       @bar = Bar.find(params[:id])
+      @promos = @bar.promotions
     end
 
     def new
@@ -16,9 +17,25 @@ module Barman
     def create
       @bar = Bar.new(bar_params)
       @bar.user_id = current_user.id
-      if @bar.save
+      if @bar.save && params[:tags_ids].present?
+        @tags = Tag.where(params[:tag_ids])
+        @tags.each do |tag|
+          BarTag.new(bar: @bar, tag: tag)
+        end
         redirect_to barman_bars_path, notice: 'Bar was successfully created'
+      else
+        render "barman/new", status: :unprocessable_entity
       end
+    end
+
+    def edit
+      @bar = Bar.find(params[:id])
+    end
+
+    def update
+      @bar = Bar.find(params[:id])
+      @bar.update(bar_params)
+      redirect_to barman_bar_path(@bar), notice: 'Votre bar a été modifié avec succès !'
     end
 
     def destroy
@@ -26,11 +43,11 @@ module Barman
       @bar.destroy
       redirect_to barman_bars_path, status: :see_other
     end
+
+    private
+
+    def bar_params
+      params.require(:bar).permit(:name, :brand, :address, :category, :description, :average_price, :open_at, :close_at, photos: [], tag_ids: [])
+    end
   end
-end
-
-private
-
-def bar_params
-  params.require(:bar).permit(:name, :address, :category, :description, :average_price, :open_at, :close_at)
 end
