@@ -1,17 +1,69 @@
-<h2><%= @bar.name %></h2>
-<p><%= @bar.address %></p>
+<div class="bar-card-show p-3 m-3">
+  <div class="row mb-3">
+  <div class="title-button">
+    <h1><%= @bar.name %></h1>
+    <%= link_to "Mes bars",  barman_bars_path, class:"button" %>
+  </div>
+    <p><%= @bar.address %></p>
+    <div id="carouselExampleIndicators" class="carousel slide col-4" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <% @bar.photos.each do |photo| %>
+        <div class="carousel-item active">
+          <%= cl_image_tag photo.key, :width => 300, :crop => "pad", class: 'd-block w-100', style: 'height: 300px; object-fit: cover;' %>
+        </div>
+        <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <div class="col-8">
+      <ul><h3>Informations</h3>
+        <li><strong>Catégorie :</strong> <%= @bar.category %></li>
+        <li><strong>Description :</strong> <%= @bar.description %></li>
+        <li><strong>Prix moyen :</strong> <%= @bar.average_price %> €</li>
+        <li><strong>Heures d'ouverture :</strong> <%= @bar.open_at %> - <%= @bar.close_at %></li>
+      </ul>
+        <%= link_to "Modifier le bar",  edit_barman_bar_path(@bar), class:"button" %>
+    </div>
+  </div>
 
-<%= link_to "New Promotion",  new_barman_bar_promotion_path(@bar), class:"button" %>
+  <div class="bar-info row justify-content-around m-3 p-3">
+     <ul><h3 class=>Mes promotions en cours</h3></ul>
+      <div class="d-flex justify-content-center">
+          <% @promos.each do |promo| %>
+              <div class="promo-card mx-3">
+                <h6><%= promo.name %></h6>
+                <p><%= promo.offer %></p>
+                <p>du : <%= promo.start_date %></p>
+                <p>au : <%= promo.end_date %></p>
+                <div class="mt-auto d-flex justify-content-center box-button">
+                <%= link_to "Modifier la promotion",  edit_barman_bar_promotion_path(@bar, promo), class:"button" %>
+                <%= link_to barman_bar_promotion_path(@bar, promo), class: 'text-decoration-none', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                <button class="button-card-barman-delete"><i class="fa-solid fa-trash fa-sm"></i></button>
+                <% end %>
+                </div>
+              </div>
+          <% end %>
+      </div>
+    <%= link_to "Nouvelle promotion",  new_barman_bar_promotion_path(@bar), class:"button-new-promotion" %>
+  </div>
 
-<p>index des promos de mon bar</p>
-<ul>
-<% @promos.each do |promo| %>
-<li>Promotion <%= promo.id %>: <%= promo.name %></li>
-<%= link_to "Edit Promotion",  edit_barman_bar_promotion_path(@bar, promo), class:"button" %>
-<%= link_to "Supprimer promotion", barman_bar_promotion_path(@bar, promo), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-<% end %>
-</ul>
 
-
-<%= link_to "Edit Bar Barman",  edit_barman_bar_path(@bar), class:"button" %>
-<%= link_to "bar index Barman",  barman_bars_path, class:"button" %>
+  <div class="bar-info">
+    <h3>Commentaires</h3>
+    <ul class="review-list">
+      <% @bar.reviews.each do |review| %>
+        <li class="review-item">
+          <p><%= review.content %></p>
+          <p class="rating"><strong>Évaluation :</strong> <%= review.rating %> / 5</p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
