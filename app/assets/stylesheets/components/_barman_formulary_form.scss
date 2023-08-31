@@ -14,8 +14,8 @@
   border-color: black;
   padding: 20px;
   box-shadow: 12px 12px 2px 1px rgba(67, 145, 209, 1);
-  width: 650px;
-  margin: 0 auto;
+  width: 80%;
+  margin-top: 10px ;
 
   h6{
     color: white
@@ -30,8 +30,12 @@
   padding-right: 40px;
 }
 
-.custom-box-shadow {
+.custom-box-shadow, .mapboxgl-ctrl-geocoder input {
   box-shadow: 6px 6px 1px 0px rgba(67, 145, 209, 1);
+}
+
+h6 input {
+  font-family: var(--bs-body-font-family);
 }
 
 .navbar_button {
