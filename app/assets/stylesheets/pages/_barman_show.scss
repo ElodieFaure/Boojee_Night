@@ -1,0 +1,79 @@
+.button-barman-show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 15px;
+  border-radius: 18px;
+  width: 147px;
+  height: 38px;
+  margin-top: -9px;
+  margin-left: 14px;
+  font-weight: bold;
+  border: 2px solid #555555;
+  transition: 0.3s;
+  box-shadow: 0px 6px 0px -2px rgba(67, 145, 209, 1);
+  background-color: #ec407a;
+}
+
+.button-new-promotion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 15px;
+  border-radius: 18px;
+  width: 200px;
+  height: 38px;
+  margin-top: 13px;
+  margin-left: 3px;
+  font-weight: bold;
+  border: 2px solid #555555;
+  transition: 0.3s;
+  box-shadow: 0px 6px 0px -2px rgba(67, 145, 209, 1);
+  background-color: #ec407a;
+}
+
+.button-new-promotion:hover {
+  box-shadow: 0 0 #fff;
+  transform: translateY(1px);
+}
+
+.title-promo-card {
+  display: flex;
+}
+
+.promo-card {
+  position: relative;
+}
+
+.box-button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.button-card-barman-delete{
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-decoration: none;
+  color: #ffffe0;
+  font-size: 15px;
+  border-radius: 18px;
+  height: 30px;
+  font-weight: bold;
+  border: 2px solid #555555;
+  transition: 0.3s;
+  box-shadow: 0px 4px 0px -2px rgba(67, 145, 209, 1);
+  background-color: #ec407a;
+}
+
+.button-card-barman-delete:hover {
+  box-shadow: 0 0 #fff;
+  transform: translateY(1px);
+}
