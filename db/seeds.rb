@@ -28,9 +28,9 @@ bar_7 = Bar.create!(name: "Le Central Pub", address: "3-5 Cr Georges Clemenceau"
 bar_8 = Bar.create!(name: "La Belle Epoque", address: "2 Allée d'Orléans Angle Quai Louis XVIII, 33000, Bordeaux France.", category: "Guinguette", description: "Côté déco, la salle est unique, on ne retrouve cette ambiance dans nul autre restaurant ici ! Les faïences Viellard ornent la grande salle, elles ont été réalisées par Amédée Caranza qui trouva son inspiration dans les céramiques orientales.", average_price: 7, open_at: "9:00", close_at: "19:00", user_id: etienne.id )
 bar_9 = Bar.create!(name: "Mama Shelter", address: "19 Rue Poquelin Molière, 33000 Bordeaux", category: "Rooftop", description: "Mama veut vous faire grimper au 7ème ciel, ou plutôt au 6ème étage, pour y découvrir son rooftop mamamoji. Pour les petites et grandes soifs, ne manquez pas de tester nos vins mamamoji et nos cocktails signatures mamamoji.", average_price: 4, open_at: "9:00", close_at: "19:00", user_id: paul.id )
 
-promo_1 = Promotion.create!(name: "Le mardi a moitié prix", offer: "-50%", start_date: "20/02/2023", end_date: "20/03/2023", bar_id: bar_2.id)
-promo_2 = Promotion.create!(name: "Happy Hour toute la nuit", offer: "-30%", start_date: "20/02/2023", end_date: "20/03/2023", bar_id: bar_1.id)
-promo_3 = Promotion.create!(name: "Une bouteille achetée, une bouteille offerte", offer: "-20%", start_date: "20/02/2023", end_date: "20/03/2023", bar_id: bar_3.id)
+promo_1 = Promotion.create!(name: "Le mardi a moitié prix", offer: "-50%", start_date: "20/02/2023", end_date: "23/02/2023", bar_id: bar_2.id)
+promo_2 = Promotion.create!(name: "Happy Hour toute la nuit", offer: "-30%", start_date: "21/02/2023", end_date: "22/02/2023", bar_id: bar_1.id)
+promo_3 = Promotion.create!(name: "Une bouteille achetée, une bouteille offerte", offer: "-20%", start_date: "20/03/2023", end_date: "23/03/2023", bar_id: bar_3.id)
 
 booking_1 = Booking.create!(user_id: etienne.id, promotion_id: promo_1.id)
 booking_2 = Booking.create!(user_id: etienne.id, promotion_id: promo_2.id)
