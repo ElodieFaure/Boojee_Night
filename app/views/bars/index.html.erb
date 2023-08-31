@@ -2,18 +2,36 @@
   <div class="container">
     <h1>Boojee Night, partenaire de vos sorties.</h1>
     <p>Trouvez les meilleures offres autour de vous </p>
-      <div class="search-form-control form-group">
-        <%= simple_form_for :search, url: bars_path , :method => :get do |f| %>
-            <%= f.input :query,
-                        class: "form-control",
-                        placeholder: "Entrez une adresse, ville ou code postal"%>
-            <%= f.input :tags, collection: Tag.all, as: :check_boxes,
-                    include_hidden: false,
-                    input_html: { class: "tag-selector" },
-                  item_wrapper_class: 'tag-item' %>
-            <%= f.submit "Search", class: "button" %>
-        <% end %>
+      <div class="container">
+        <div class="r">
+          <div class="col-md-10">
+            <div class="row justify-content-around">
+              <div class="card-body">
+                <%= simple_form_for :search, url: bars_path, method: :get, html:{class: "d-flex gap-5"} do |f| %>
+                  <div class="form-group col">
+                    <%= f.input :query,
+                                label: "Recherche par adresse, ville ou code postal",
+                                class: "form-control search-input",
+                                placeholder: "Entrez une adresse, ville ou code postal" %>
+                  </div>
+                  <div class="form-group col">
+                  <%= f.input :tags, collection: Tag.all, as: :check_boxes,
+                            label: "Tags associés",
+                            include_hidden: false,
+                            input_html: { class: "tag-selector" },
+                            item_wrapper_class: 'tag-item' %>
+                  </div>
+              <div class="form-group col d-flex flex-column justify-content-center align-items-center">
+              <%= f.submit "Rechercher", class: "button" %>
+            <% end %>
+            </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+</div>
+
   </div>
 </div>
 
@@ -33,7 +51,7 @@
                 </div>
                 <div class="bar-card-flex">
                   <h2 class="bar-name"><strong><%= link_to bar.name, bar_path(bar)  %></strong></h2>
-                  <%# <h2 class="rating"><%= bar.reviews.last.rating %>/5</h2> %>
+                  <%# <h2 class="rating"><%= bar.reviews.last.rating %>/5</h2>
                 </div>
                   <p class="adress"><%= bar.address %></p>
                   <p class="average-price">Prix moyen : <%= bar.average_price %>€</p>
