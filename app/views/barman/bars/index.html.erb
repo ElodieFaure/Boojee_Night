@@ -1,20 +1,16 @@
-<p>INDEX</p>
-
-<ul>
-  <% @bars.each do |bar| %>
-    <li><%= link_to bar.name, barman_bar_path(bar) %></li>
-    <div class="card-barman-delete"><%= link_to "Supprimer Bar", barman_bar_path(bar), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></div>
-  <% end %>
-</ul>
-
-<div class="cards-barman">
-  <% @bars.each do |bar| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
-      <%= link_to bar.name, barman_bar_path(bar), class:'text-decoration-none'%>
-      <button class="button-card-barman-delete"><%= link_to "🗑", barman_bar_path(bar), class: 'text-decoration-none', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></button>
+<div class="container">
+  <div class="title-button">
+    <h1>LES BARS DE <%= current_user.first_name %></h1>
+    <button class= "button-create-bar"><%= link_to "Nouveau bar", new_barman_bar_path, class: 'text-decoration-none' %></button>
+  </div>
+    <div class="cards-barman">
+      <% @bars.each do |bar| %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
+          <%= link_to bar.name, barman_bar_path(bar), class:'text-decoration-none'%>
+          <%= link_to  barman_bar_path(bar), class: 'text-decoration-none', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+          <button class="button-card-barman-delete"><i class="fa-solid fa-trash fa-sm"></i></button>
+          <% end %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
 </div>
-
-
-<button class= "button"><%= link_to "Create", new_barman_bar_path %></button>
