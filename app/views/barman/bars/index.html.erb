@@ -8,12 +8,12 @@
 </ul>
 
 <div class="cards-barman">
-<% @bars.each do |bar| %>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
-    <%= link_to bar.name, barman_bar_path(bar) %>
-    <button class="button-card-barman-delete"><%= link_to "Bar", barman_bar_path(bar), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></button>
-  </div>
- <% end %>
+  <% @bars.each do |bar| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
+      <%= link_to bar.name, barman_bar_path(bar), class:'text-decoration-none'%>
+      <button class="button-card-barman-delete"><%= link_to "🗑", barman_bar_path(bar), class: 'text-decoration-none', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></button>
+    </div>
+  <% end %>
 </div>
 
 
