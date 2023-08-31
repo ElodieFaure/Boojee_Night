@@ -1,10 +1,17 @@
+.title-button {
+  display: flex;
+  justify-content: space-between;
+}
+
 .cards-barman {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+  color: white;
 }
 
 .card-category {
+  position: relative;
   background-size: cover;
   background-position: center;
   height: 180px;
@@ -14,6 +21,8 @@
   color: white;
   font-size: 24px;
   font-weight: bold;
+  margin-left: 5px;
+  margin-right: 5px;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -28,17 +37,51 @@
   color: #ffffe0;
   font-size: 15px;
   border-radius: 18px;
+  height: 30px;
+  font-weight: bold;
+  border: 2px solid #555555;
+  transition: 0.3s;
+  box-shadow: 0px 4px 0px -2px rgba(67, 145, 209, 1);
+  background-color: #ec407a;
+  position: absolute;
+  right: 18px;
+  width: 30px;
+  bottom: 18px
+}
+
+.button-card-barman-delete:hover {
+  box-shadow: 0 0 #fff;
+  transform: translateY(1px);
+}
+
+.text-decoration-none {
+  color: white;
+}
+
+.button-create-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 15px;
+  border-radius: 18px;
   width: 147px;
   height: 38px;
+  margin-top: 7px;
   font-weight: bold;
   border: 2px solid #555555;
   transition: 0.3s;
   box-shadow: 0px 6px 0px -2px rgba(67, 145, 209, 1);
   background-color: #ec407a;
-  position: absolute;
-  right: 16px;
-  width: 40px;
 }
+
+.button-create-bar:hover {
+  box-shadow: 0 0 #fff;
+  transform: translateY(1px);
+}
+
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {

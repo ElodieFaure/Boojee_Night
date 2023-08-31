@@ -1,6 +1,7 @@
 class Bar < ApplicationRecord
   include PgSearch::Model
 
+  CATEGORY = ["Bar", "Pub", "Night Club", "Salon de thé"]
   belongs_to :user
   has_many :promotions, dependent: :destroy
   has_many :bar_tags, dependent: :destroy
@@ -26,4 +27,5 @@ class Bar < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+
 end
