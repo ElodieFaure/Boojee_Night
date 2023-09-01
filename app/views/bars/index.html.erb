@@ -39,34 +39,53 @@
 <div class="container text-center">
  <div class="row">
     <div class="col col-lg-6">
+
       <% @bars.each do |bar| %>
-          <div class="bar-card">
-            <img src="https://toitoimontoit.fr/wp-content/uploads/2020/02/barabulles-2.jpg" class="bar-card-img" alt="bar-pitcure">
-              <div class="bar-details">
-                <div class="bar-card-flex">
-                  <p class="bar-category"><em><%= bar.category %></em></p>
-                  <% bar.bar_tags.each do |bar_tag| %>
-                  <span>#<%= bar_tag.tag.name %></span>
-                  <% end %>
-                </div>
-                <div class="bar-card-flex">
-                  <h2 class="bar-name"><strong><%= link_to bar.name, bar_path(bar)  %></strong></h2>
-                  <%# <h2 class="rating"><%= bar.reviews.last.rating %>/5</h2>
-                </div>
-                  <p class="adress"><%= bar.address %></p>
-                  <p class="average-price">Prix moyen : <%= bar.average_price %>€</p>
-                  <% bar.promotions.each do |promo| %>
-                  <p class="promotion"><%= promo.name %></p>
-                  <% end %>
+      <%= link_to bar_path(bar), style:'text-decoration: none; color: inherit' do %>
+        <div class="bar-card">
+
+          <img src="https://toitoimontoit.fr/wp-content/uploads/2020/02/barabulles-2.jpg" class="bar-card-img" alt="bar-pitcure">
+
+          <div class="bar-details">
+
+            <div class="bar-card-flex-title">
+              <h2 class="bar-name"><strong><%= bar.name %></strong></h2>
+                <div class="rating-position">
+                <%# <h2 class="rating"><%= bar.reviews.last.rating %>/5</h2>
               </div>
             </div>
+
+            <div class="tags-style">
+              <% bar.bar_tags.each do |bar_tag| %>
+              <span><strong>#<%= bar_tag.tag.name %></strong></span>
               <% end %>
             </div>
+
+            <div class="address-avg-price">
+              <p class="address"><%= bar.address %></p>
+              <p class="average-price"><strong>Prix moyen: </strong> <%= bar.average_price %>€</p>
+            </div>
+
+            <div class="bar-card-flex-promo">
+              <% bar.promotions.each do |promo| %>
+              <p class="promo-card-index"><strong><%= promo.name %></strong></p>
+              <% end %>
+            </div>
+
+          </div>
+
+        </div>
+    <% end %>
+      <% end %>
+
+    </div>
+
+
     <div class="col col-lg-6" class="sticky">
       <div id="map" style="width: 100%; height: 100vh;"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div>
     </div>
+  </div>
 </div>
