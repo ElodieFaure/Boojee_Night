@@ -1,12 +1,25 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
 
-<%= simple_form_for [@booking, @review] do |f| %>
-<%= f.input :content,
-            as: :text,
-            label: "Commentaire"%>
-<%= f.input :rating,
-            as: :integer,
-            label: "Note (entre 0 et 5)" %>
-<%= f.submit 'Soumettre mon commentaire', class:"button" %>
-<% end %>
+<div class="page-container">
+  <div class="formulary-card">
+    <h6>
+      Commenter votre expérience chez <%= @booking.promotion.bar.name.capitalize %>
+    </h6>
+    <%= simple_form_for [@booking, @review] do |f| %>
+      <h6>
+        <%= f.input :content,
+                    as: :text,
+                    label: "Commentaire",
+                    input_html: { class: "custom-box-shadow" }%>
+      </h6>
+      <h6>
+        <%= f.input :rating,
+                    as: :integer,
+                    label: "Note (entre 0 et 5)",
+                    input_html: { class: "custom-box-shadow" }%>
+      </h6>
+      <h6>
+        <%= f.submit 'Soumettre mon commentaire', class:"navbar_button" %>
+      </h6>
+    <% end %>
+  </div>
+</div>
