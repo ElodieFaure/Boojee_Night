@@ -1,9 +1,9 @@
 <p>Éditer la promotion</p>
   <div class="page-container">
     <div class="formulary-card">
+<%= simple_form_for [:barman, @bar, @promotion] do |f| %>
       <div class="d-flex">
         <div class="left-col">
-<%= simple_form_for [:barman, @bar, @promotion] do |f| %>
   <h6><%= f.input :name, input_html: { class: "custom-box-shadow" } %></h6>
   <h6><%= f.input :offer, input_html: { class: "custom-box-shadow" } %></h6>
         </div>
