@@ -1,19 +1,19 @@
 <h1><%= @bar.name %>: Nouvelle promotion</h1>
 
-  <div class="page-container">
-    <div class="formulary-card">
+<div class="page-container">
+  <div class="formulary-card">
+  <%= simple_form_for [:barman, @bar, @promotion] do |f| %>
       <div class="d-flex">
         <div class="left-col">
-<%= simple_form_for [:barman, @bar, @promotion] do |f| %>
-  <h6><%= f.input :name, input_html: { class: "custom-box-shadow" } %></h6>
-  <h6><%= f.input :offer, input_html: { class: "custom-box-shadow" } %></h6>
+        <h6><%= f.input :name, input_html: { class: "custom-box-shadow" } %></h6>
+        <h6><%= f.input :offer, input_html: { class: "custom-box-shadow" } %></h6>
         </div>
-          <div class="right-col">
-  <h6><%= f.input :start_date, input_html: { class: "custom-box-shadow" } %></h6>
-  <h6><%= f.input :end_date, input_html: { class: "custom-box-shadow" } %></h6>
-  <h6><%= f.submit "Créer promotion", class:"navbar_button"  %></h6>
+    <div class="right-col">
+      <h6><%= f.input :start_date, input_html: { class: "custom-box-shadow" } %></h6>
+      <h6><%= f.input :end_date, input_html: { class: "custom-box-shadow" } %></h6>
+      <h6><%= f.submit "Créer promotion", class:"navbar_button"  %></h6>
+    <% end %>
         </div>
       </div>
-<% end %>
-    </div>
   </div>
+</div>
