@@ -1,9 +1,18 @@
-<p>Editer la promotions</p>
-
+<p>Éditer la promotion</p>
+  <div class="page-container">
+    <div class="formulary-card">
+      <div class="d-flex">
+        <div class="left-col">
 <%= simple_form_for [:barman, @bar, @promotion] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :offer %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.submit %>
+  <h6><%= f.input :name, input_html: { class: "custom-box-shadow" } %></h6>
+  <h6><%= f.input :offer, input_html: { class: "custom-box-shadow" } %></h6>
+        </div>
+          <div class="right-col">
+  <h6><%= f.input :start_date, input_html: { class: "custom-box-shadow" } %></h6>
+  <h6><%= f.input :end_date, input_html: { class: "custom-box-shadow" } %></h6>
+  <h6><%= f.submit "Éditer promotion", class:"navbar_button" %></h6>
+       </div>
+      </div>
 <% end %>
+    </div>
+  </div>
