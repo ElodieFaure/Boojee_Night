@@ -1,12 +1,12 @@
 .bar-card {
+  position: relative;
   display: flex;
-  align-items: center;
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 3px;
-  padding: 15px;
+  padding: 7px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .bar-card img {
@@ -23,6 +23,7 @@
 .bar-details {
   margin: 0;
   font-size: 1rem;
+  font: $body-font;
 }
 
 .bar-details h2 {
