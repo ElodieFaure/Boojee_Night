@@ -1,0 +1,50 @@
+.address-avg-price {
+  text-align: left;
+  padding-left: 10px;
+}
+
+.tags-style-bar {
+  display: inline-block;
+  font-size: 0.7rem;
+  border-radius: 50rem;
+  padding: 0.1rem 0.5rem;
+  background-color: #ECEAFF;
+  color: #7E73FF;
+  border: 1px solid #7E73FF;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.bar-name {
+  text-align: left;
+  padding-left: 10px;
+}
+
+.promo-card-index {
+  background-color: #ec407914;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 3px;
+  width: 30%;
+  height: auto;
+}
+
+.bar-card-flex-promo {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.bar-card-flex-title {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+
+.rating-position {
+  width: auto;
+}
