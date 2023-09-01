@@ -49,7 +49,7 @@
           <p>Valable du : <%= promo.start_date.strftime("%d/%m/%y") %></p>
           <p>au : <%= promo.end_date.strftime("%d/%m/%y") %></p>
           <div class="mt-auto d-flex justify-content-center">
-            <%= link_to "Reserver", bar_promotion_path(promo.bar, promo), class: "button" %>
+            <%= button_to 'Réserver', promotion_bookings_path(promo), method: :post, class: 'button' %>
           </div>
         </div>
       <% end %>

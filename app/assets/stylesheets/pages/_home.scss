@@ -8,20 +8,26 @@
 }
 
 .title-box {
-  position: relative;
-  background-position: center;
-  object-fit: cover;
+  // background-position: center;
+  // object-fit: cover;
+  margin-top: 25px;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  width: 500px;
-  height: 200px;
-  margin-top: 3em;
-  margin-bottom: 3em;
+  // align-items: flex-end;
 }
 
 .button-container {
   display: flex;
   gap: 6em;
   margin-bottom: 4em;
+  text-align: center;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.657);
+  border-radius: 3px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 40%;
+
 }
