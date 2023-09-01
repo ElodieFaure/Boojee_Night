@@ -44,7 +44,12 @@
       <%= link_to bar_path(bar), style:'text-decoration: none; color: inherit' do %>
         <div class="bar-card">
 
-          <img src="https://toitoimontoit.fr/wp-content/uploads/2020/02/barabulles-2.jpg" class="bar-card-img" alt="bar-pitcure">
+
+          <% if bar.photos.present? %>
+              <%= cl_image_tag bar.photos.first.key, height: 300, width: 400, crop: :fill %>
+            <% else  %>
+              <img src="https://toitoimontoit.fr/wp-content/uploads/2020/02/barabulles-2.jpg" class="bar-card-img" alt="bar-pitcure">
+            <% end %>
 
           <div class="bar-details">
 
