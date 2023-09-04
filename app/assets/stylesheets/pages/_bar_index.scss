@@ -51,12 +51,15 @@
 
 .bar-card-flex-title {
   display: flex;
-  position: relative;
-
+  justify-content: space-between;
 }
 
 .rating-position {
   width: auto;
+  h3 {
+    font-size: 20px;
+    text-align: left;
+  }
 }
 
 .bar-card-img {

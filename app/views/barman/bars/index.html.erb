@@ -1,21 +1,68 @@
 <div class="container">
   <div class="title-button">
     <h1>MES BARS</h1>
-    <button class= "button-create-bar"><%= link_to "Nouveau bar", new_barman_bar_path, class: 'text-decoration-none' %></button>
+    <button type="button" class="button-create-bar" data-bs-toggle="modal" data-bs-target="#create-bar">
+    Nouveau bar
+    </button>
+    <div class="modal fade" id="create-bar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Nouveau bar</h3>
+          </div>
+          <div class="modal-body">
+          <div class="d-flex justify-content-center w-100">
+
+          <%= simple_form_for [:barman, @bar], html: { class: "formulary-card form-width"} do |f| %>
+
+          <div class="d-flex">
+          <div class="left-col">
+          <h6><%= f.input :name, input_html: { class: "custom-box-shadow" } %></h6>
+          <h6>
+          <%= f.input :address, placeholder: "test",
+            input_html: {data: {address_autocomplete_target: "address"}, class: "d-none" },
+            wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]} }
+          %>
+          </h6>
+            <h6><%= f.input :description, input_html: { class: "custom-box-shadow" } %></h6>
+            <h6><%= f.association :tags, as: :check_boxes,
+                            include_hidden: false,
+                            input_html: { class: "tag-selector" },
+                          item_wrapper_class: 'tag-item' %></h6>
+            </div>
+            <div class="right-col">
+            <h6><%= f.input :average_price, input_html: { class: "custom-box-shadow" } %></h6>
+            <h6><%= f.input :open_at, input_html: { class: "custom-box-shadow" } %></h6>
+            <h6><%= f.input :close_at, input_html: { class: "custom-box-shadow" } %></h6>
+            <%= f.input :photos, as: :file, input_html: { multiple: true }%>
+            <h6><%= f.submit "Créer votre Bar", class:"navbar_button"%>
+            </div>
+          </div>
+          <% end %>
+          </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="button" data-bs-dismiss="modal">Fermer</button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </div>
     <div class="cards-barman">
       <% @bars.each do |bar| %>
         <% if bar.photos.present? %>
-<div class="card-category" style="background-image: url(<%= cl_image_path(bar.photos.first.key) %>)">
+<div class="card-category position-relative" style="background-image: url(<%= cl_image_path(bar.photos.first.key) %>)">
+
 
        <% else %>
             <div class="card-category position-relative"  style="background-image: url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)" >
         <% end %>
 
-        <h3><%= link_to bar.name, barman_bar_path(bar), class:'text-decoration-none'%></h3>
-        <%= link_to  barman_bar_path(bar), class: 'text-decoration-none', data: {turbo_method: :delete, turbo_confirm: "Êtes-vous certain?"} do %>
-          <button type="button" class="button-card-barman-delete" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash fa-sm"></i></button>
-        <% end %>
 
           <div class="position-relative position-absolute info" data-controller="tooltip">
             <i class="fa-solid fa-circle-info fa-lg" style="color: #ec407a;" data-action="mouseover->tooltip#fire mouseout->tooltip#unfire">
@@ -26,9 +73,27 @@
               </div>
           </div>
 
+        <h3><%= link_to bar.name, barman_bar_path(bar), class:'text-decoration-none'%></h3>
+        <button type="button" class="button-card-barman-delete" data-bs-toggle="modal" data-bs-target="#delete-bar"><i class="fa-solid fa-trash fa-sm"></i></button>
+
+
+        <div class="modal fade" id="delete-bar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Êtes-vous certain de vouloir supprimer ce bar ?</h4>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="button" data-bs-dismiss="modal">NON</button>
+                <%= link_to "OUI", barman_bar_path(bar), data: {turbo_method: :delete}, class:"button-yes" %>
+              </div>
+            </div>
+          </div>
+        </div>
+
         </div>
       <% end %>
 
-       </div>
+      </div>
     </div>
 </div>
