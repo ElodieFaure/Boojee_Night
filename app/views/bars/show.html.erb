@@ -7,7 +7,7 @@
       <div class="carousel-inner">
        <% @bar.photos.each_with_index do |photo, index| %>
   <div class="carousel-item <%= "active" if index == 0 %>">
-    <%= cl_image_tag photo.key, :width => 300, :crop => "pad", class: 'd-block w-100 rounded-2', style: 'height: 300px; object-fit: cover;' %>
+    <%= cl_image_tag photo.key, width: 300, crop: "pad", class: 'd-block w-100 rounded-2', style: 'height: 300px; object-fit: cover;' %>
   </div>
 <% end %>
       </div>
