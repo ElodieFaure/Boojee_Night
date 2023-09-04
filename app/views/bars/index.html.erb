@@ -44,7 +44,6 @@
       <%= link_to bar_path(bar), style:'text-decoration: none; color: inherit' do %>
         <div class="bar-card">
 
-
           <% if bar.photos.present? %>
               <%= cl_image_tag bar.photos.first.key, height: 300, width: 400, crop: :fill %>
             <% else  %>
