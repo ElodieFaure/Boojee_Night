@@ -9,6 +9,7 @@
   text-align: center;
   top: 10px;
   left: -250px;
+  text-shadow: white;
 }
 
 progress {
@@ -22,4 +23,9 @@ progress::-webkit-progress-bar {
 }
 progress::-webkit-progress-value {
   background-color: #ec407a;
+}
+.info {
+  top: 10px;
+  right: 20px;
+
 }
