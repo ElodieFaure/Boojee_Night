@@ -61,8 +61,20 @@
                     <% bar.reviews.each do |review| %>
                       <%  sum += review.rating%>
                     <% end %>
-                  <% avg = (sum/total_reviews) %>
-                  <h2> <%= avg %> ⭐️ </h2>
+                  <% avg = (sum / total_reviews) %>
+                    <h3>
+                      <% if avg == 1 %>
+                        ⭐️
+                      <% elsif avg == 2 %>
+                        ⭐️⭐️
+                      <% elsif avg == 3 %>
+                        ⭐️⭐️⭐️
+                      <% elsif avg == 4 %>
+                        ⭐️⭐️⭐️⭐️
+                      <% else avg == 5 %>
+                        ⭐️⭐️⭐️⭐️⭐️
+                      <% end %>
+                    </h3>
                 <% end %>
               </div>
             </div>

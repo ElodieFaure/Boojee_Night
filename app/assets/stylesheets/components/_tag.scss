@@ -40,11 +40,13 @@
   display: inline-block;
   border-radius: 3px;
   padding: 0.1rem 0.5rem;
-  background-color: #ec407959;
-  // text-decoration: none;
+  background-color: #ec407a;
   color:  #ec407a;
-  border: 1px solid  #ec407a;
-  margin-right: 0.6rem;
-  margin-bottom: 0.4rem;
-
+  border: 1px solid  ;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  a {
+    text-decoration: none;
+    color: white;
+  }
 }
