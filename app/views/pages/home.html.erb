@@ -1,15 +1,53 @@
-<div class="home-page-container">
-  <div class="card">
-  <h1>Bienvenue sur Boojee Night</h1>
-  <p>votre complice ultime pour des soirées inoubliables !
-  Notre plateforme révolutionnaire vous offre la clé d'une expérience nocturne inégalée.
-  Grâce à notre fonction de géolocalisation, découvrez les meilleurs bars et promotions à proximité, vous garantissant une nuit sans pareille, où que vous soyez.</p>
-  <p>Mais avant tout, qui etes-vous ?</p>
-    <div class="title-box">
-      <div class="button-container">
-        <%= link_to "Je veux boojee tonight",  bars_path, class:"button" %>
-        <%= link_to "Je suis barman",  barman_bars_path, class:"button" %>
+<% if current_user&.category == "client" %>
+
+  <div class="home-page-container">
+    <div class="card">
+    <h1>Bienvenue sur Boojee Night</h1>
+    <p>votre complice ultime pour des soirées inoubliables !
+    Notre plateforme révolutionnaire vous offre la clé d'une expérience nocturne inégalée.
+    Grâce à notre fonction de géolocalisation, découvrez les meilleurs bars et promotions à proximité, vous garantissant une nuit sans pareille, où que vous soyez.</p>
+    <p>Mais avant tout, qui etes-vous ?</p>
+      <div class="title-box">
+        <div class="button-container">
+          <%= link_to "Je veux boojee tonight",  bars_path, class:"button" %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+<% elsif current_user&.category == "bar" %>
+
+  <div class="home-page-container">
+    <div class="card">
+    <h1>Bienvenue sur Boojee Night</h1>
+    <p>votre complice ultime pour des soirées inoubliables !
+    Notre plateforme révolutionnaire vous offre la clé d'une expérience nocturne inégalée.
+    Grâce à notre fonction de géolocalisation, découvrez les meilleurs bars et promotions à proximité, vous garantissant une nuit sans pareille, où que vous soyez.</p>
+    <p>Mais avant tout, qui etes-vous ?</p>
+      <div class="title-box">
+        <div class="button-container">
+          <%= link_to "Je suis barman",  barman_bars_path, class:"button" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% else %>
+
+  <div class="home-page-container">
+    <div class="card">
+    <h1>Bienvenue sur Boojee Night</h1>
+    <p>votre complice ultime pour des soirées inoubliables !
+    Notre plateforme révolutionnaire vous offre la clé d'une expérience nocturne inégalée.
+    Grâce à notre fonction de géolocalisation, découvrez les meilleurs bars et promotions à proximité, vous garantissant une nuit sans pareille, où que vous soyez.</p>
+    <p>Mais avant tout, qui etes-vous ?</p>
+      <div class="title-box">
+        <div class="button-container">
+          <%= link_to "Je veux boojee tonight",  bars_path, class:"button" %>
+          <%= link_to "Je suis barman",  barman_bars_path, class:"button" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>

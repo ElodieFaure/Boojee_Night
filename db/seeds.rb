@@ -60,7 +60,7 @@ promo_13 = Promotion.create!(name: "Festival des Mojitos", offer: "Tous les moji
 promo_14 = Promotion.create!(name: "Menu Étudiant", offer: "Menu complet à -25% sur présentation de la carte étudiante", start_date: "10/02/2024", end_date: "10/02/2024", bar_id: bar_5.id)
 promo_15 = Promotion.create!(name: "Saint-Valentin Romantique", offer: "Dîner aux chandelles avec une bouteille de vin offerte", start_date: "14/02/2024", end_date: "14/02/2024", bar_id: bar_5.id)
 
-booking_1 = Booking.create!(user_id: etienne.id, promotion_id: promo_1.id)
+booking_1 = Booking.create!(user_id: etienne.id, promotion_id: promo_1.id, qr_progress: 1)
 booking_2 = Booking.create!(user_id: etienne.id, promotion_id: promo_2.id)
 booking_3 = Booking.create!(user_id: etienne.id, promotion_id: promo_3.id)
 booking_4 = Booking.create!(user_id: etienne.id, promotion_id: promo_4.id)
