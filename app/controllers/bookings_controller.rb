@@ -45,6 +45,10 @@ class BookingsController < ApplicationController
 
   def edit
     @booking = Booking.find(params[:id])
+    if current_user == @booking.promotion.bar.user
+      @booking.update(qr_progress: "used")
+    end
+    redirect_to barman_bar_path(@booking.promotion.bar)
   end
 
   def update
