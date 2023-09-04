@@ -2,7 +2,7 @@ module Barman
   class BarsController < ApplicationController
     def index
       @user = current_user.id
-      @bars = Bar.where(user_id: @user)
+      @bars = Bar.where(user_id: @user).order('name ASC')
     end
 
     def show
