@@ -12,6 +12,11 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:index, :destroy] do
     resources :reviews, only: [:new, :create]
+
+    member do
+      get 'edit'
+      patch 'update'
+    end
   end
 
   namespace :barman do
