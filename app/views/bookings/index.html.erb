@@ -3,7 +3,7 @@
 <div class="container">
   <div class="d-flex-start">
   <h1>Vos réservations</h1>
-  <h6 class= "select-show" ><%= link_to 'à venir', :select => "pending" %></h6>
+  <h6 class= "select-show " ><%= link_to 'à venir', :select => "pending" %></h6>
   <h6 class= "select-show" ><%= link_to 'utilisée', :select => "used" %></h6>
   <h6 class= "select-show" ><%= link_to 'expirée', :select => "expired" %></h6>
   </div>
@@ -13,8 +13,7 @@
         <th scope="col"></th>
         <th scope="col">Promotion</th>
         <th scope="col">Bar</th>
-        <th scope="col">Début <%= link_to '△', :sort => "start-asc" %> <%= link_to '▽', :sort => "start-desc" %> </th>
-        <th scope="col">Fin <%= link_to '△', :sort => "end-asc" %> <%= link_to '▽', :sort => "end-desc" %></th>
+        <th scope="col">Validité</th>
         <th scope="col">Status</th>
         <th scope="col">Annuler</th>
         <th scope="col">Commenter</th>
@@ -26,8 +25,7 @@
           <th scope="row"></th>
           <td><%= booking.promotion.name%></td>
           <td><%= link_to booking.promotion.bar.name, bar_path(booking.promotion.bar)%></td>
-          <td><%= booking.promotion.start_date.strftime("%d/%m/%y")%></td>
-          <td><%= booking.promotion.end_date.strftime("%d/%m/%y")%></td>
+          <td>du <%= booking.promotion.start_date.strftime("%d %b").downcase%>  au <%= booking.promotion.end_date.strftime("%d %b").downcase%></td>
             <% if booking.used? %>
               <td><%= booking.qr_progress_labels[booking.qr_progress.to_sym]%></td>
             <% elsif  Date.today > booking.promotion.end_date %>
