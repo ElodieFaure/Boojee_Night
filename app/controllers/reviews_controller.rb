@@ -2,6 +2,11 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @booking = Booking.find(params[:booking_id])
+    if @booking.qr_progress != "used"
+      redirect_to bookings_path, notice: "blablablabla"
+    else
+      render "new"
+    end
   end
 
   def create

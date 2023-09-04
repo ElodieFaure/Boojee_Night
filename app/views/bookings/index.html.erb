@@ -52,7 +52,7 @@
             </td>
           <% else %>
             <td class="text-center">
-                <%= link_to "#", data: { turbo_notice: "Vous devez utiliser votre promotion pour pouvoir laiser un commentaire."} do %>
+                <%= link_to new_booking_review_path(booking) do %>
                   <i class="fa-solid fa-pen-to-square" style="color: #727379;"></i>
                 <% end %>
             </td>
