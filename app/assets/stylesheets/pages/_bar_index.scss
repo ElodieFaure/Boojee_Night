@@ -1,18 +1,25 @@
 .address-avg-price {
   text-align: left;
   padding-left: 10px;
+  margin-bottom: 10px;
 }
 
 .tags-style-bar {
-  display: inline-block;
-  font-size: 0.7rem;
+  font-size: 0.5rem;
   border-radius: 50rem;
-  padding: 0.1rem 0.5rem;
   background-color: #ECEAFF;
   color: #7E73FF;
   border: 1px solid #7E73FF;
-  margin-right: 0.6rem;
-  margin-bottom: 0.4rem;
+  margin: 0.4rem;
+  padding-right: 14px;
+  padding-left: 14px;
+  padding-bottom: 4px;
+  padding-top: 4px;
+  text-align: left;
+  width: fit-content;
+  h6 {
+  margin-bottom: 0;
+  }
 }
 
 .bar-name {
@@ -23,18 +30,21 @@
 .promo-card-index {
   background-color: #ec407914;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px 0 #ec407a;
   display: flex;
   flex-direction: column;
   text-align: center;
+  justify-content: center;
   padding: 3px;
   width: 30%;
   height: auto;
+  font-size: small;
+  margin-right: 16px;
 }
 
 .bar-card-flex-promo {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   margin-left: 10px;
   margin-right: 20px;
 }
@@ -42,7 +52,7 @@
 .bar-card-flex-title {
   display: flex;
   position: relative;
-  justify-content: space-between;
+
 }
 
 .rating-position {
@@ -51,4 +61,11 @@
 
 .bar-card-img {
   width: 150px;
+}
+
+.address-avg-price {
+  p{
+    margin-top: 0;
+    margin-bottom: 8px !important;
+  }
 }

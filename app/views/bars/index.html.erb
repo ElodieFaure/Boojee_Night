@@ -67,20 +67,22 @@
               </div>
             </div>
 
-            <div class="tags-style">
+            <div class="tags-style-bar">
               <% bar.bar_tags.each do |bar_tag| %>
-              <span><strong>#<%= bar_tag.tag.name %></strong></span>
+              <h6 ><%= bar_tag.tag.name.capitalize %></h6>
               <% end %>
             </div>
 
+
+
             <div class="address-avg-price">
               <p class="address"><%= bar.address %></p>
-              <p class="average-price"><strong>Prix moyen: </strong> <%= bar.average_price %>€</p>
+              <p class="average-price">Prix moyen: <%= bar.average_price %>€</p>
             </div>
 
             <div class="bar-card-flex-promo">
               <% bar.promotions.where("promotions.end_date > ?", Date.today).order_by_start_asc.limit(3).each do |promo| %>
-              <p class="promo-card-index"><strong><%= promo.name %></strong></p>
+              <p class="promo-card-index"><%= promo.name %></p>
               <% end %>
             </div>
 
