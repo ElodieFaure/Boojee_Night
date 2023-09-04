@@ -43,6 +43,9 @@
                 <p>du : <%= promo.start_date %></p>
                 <p>au : <%= promo.end_date %></p>
                 <div class="mt-auto d-flex justify-content-center box-button">
+                <button class="button-card-barman-delete" >
+                  <i class="fa-solid fa-circle-info" style="color: #ec407a;" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= pluralize(promo.bookings.size, "réservation") %>"></i>
+                </button>
                 <%= link_to "Modifier la promotion",  edit_barman_bar_promotion_path(@bar, promo), class:"button" %>
                 <%= link_to barman_bar_promotion_path(@bar, promo), class: 'text-decoration-none', data: {turbo_method: :delete, turbo_confirm: "Êtes-vous certain?"} do %>
                 <button class="button-card-barman-delete"><i class="fa-solid fa-trash fa-sm"></i></button>
