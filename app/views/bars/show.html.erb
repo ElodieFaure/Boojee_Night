@@ -45,9 +45,8 @@
       <% @promos.each do |promo| %>
         <div class="promo-card mx-3">
           <h6><%= promo.name %></h6>
-          <p><%= promo.offer %></p>
-          <p>Valable du : <%= promo.start_date.strftime("%d/%m/%y") %></p>
-          <p>au : <%= promo.end_date.strftime("%d/%m/%y") %></p>
+          <p><i class="fa-solid fa-gift" style="color: #ec407a;"></i> <%= promo.offer %></p>
+          <p>Valable du : <%= promo.start_date.strftime("%d/%m/%y") %> au : <%= promo.end_date.strftime("%d/%m/%y") %></p>
           <div class="mt-auto d-flex justify-content-center">
             <%= button_to 'Réserver', promotion_bookings_path(promo), method: :post, class: 'button' %>
           </div>
