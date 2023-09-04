@@ -56,11 +56,22 @@
     <div class="cards-barman">
       <% @bars.each do |bar| %>
         <% if bar.photos.present? %>
-<div class="card-category" style="background-image: url(<%= cl_image_path(bar.photos.first.key) %>)">
+<div class="card-category position-relative" style="background-image: url(<%= cl_image_path(bar.photos.first.key) %>)">
 
-      <% else %>
-            <div class="card-category"  style="background-image: url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)" >
+
+       <% else %>
+            <div class="card-category position-relative"  style="background-image: url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)" >
         <% end %>
+
+
+          <div class="position-relative position-absolute info" data-controller="tooltip">
+            <i class="fa-solid fa-circle-info fa-lg" style="color: #ec407a;" data-action="mouseover->tooltip#fire mouseout->tooltip#unfire">
+            </i>
+              <div class="my-tooltip position-absolute d-none" data-tooltip-target="card">
+                  <h6>Promotion en cours et à venir</h6>
+                  <p> Total : <%= bar.promotions.select_upcoming.size %></p>
+              </div>
+          </div>
 
         <h3><%= link_to bar.name, barman_bar_path(bar), class:'text-decoration-none'%></h3>
         <button type="button" class="button-card-barman-delete" data-bs-toggle="modal" data-bs-target="#delete-bar"><i class="fa-solid fa-trash fa-sm"></i></button>

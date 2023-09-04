@@ -28,12 +28,11 @@
           <td><%= link_to booking.promotion.bar.name, bar_path(booking.promotion.bar)%></td>
           <td>du <%= booking.promotion.start_date.strftime("%d %b").downcase%>  au <%= booking.promotion.end_date.strftime("%d %b").downcase%></td>
           <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#qr-modal-<%= booking.id%>">
-          Launch demo modal</button></td>
+          QR Code</button></td>
             <% if booking.used? %>
               <td><%= booking.qr_progress_labels[booking.qr_progress.to_sym]%></td>
             <% elsif  Date.today > booking.promotion.end_date %>
-                <%booking.expired! %>
-
+              <%booking.expired! %>
               <td><%= booking.qr_progress_labels[booking.qr_progress.to_sym] %></td>
             <% else %>
               <% booking.pending! %>
