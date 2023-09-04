@@ -23,7 +23,12 @@ class BookingsController < ApplicationController
     if params[:sort] == "end-asc"
       @bookings = @bookings.order_end_by_desc
     end
+    @qr_codes = []
+    @bookings.each do |booking|
+      @qr_codes << RQRCode::QRCode.new(booking.qr_code).as_svg
+    end
   end
+
 
   def create
     @promotion = Promotion.find(params[:promotion_id])
@@ -38,9 +43,28 @@ class BookingsController < ApplicationController
     end
   end
 
+  def edit
+    @booking = Booking.find(params[:id])
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+
+    if @booking.update(booking_params)
+      redirect_to @booking, notice: 'Votre réservation a été mise à jour avec succès'
+    else render :edit
+    end
+  end
+
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
     redirect_to bookings_path
+  end
+
+private
+
+  def booking_params
+  params.require(:booking).permit(:qr_progress)
   end
 end
