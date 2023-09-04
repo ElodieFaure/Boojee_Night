@@ -3,6 +3,7 @@ module Barman
     def index
       @user = current_user.id
       @bars = Bar.where(user_id: @user).order('name ASC')
+      @bar = Bar.new
     end
 
     def show
