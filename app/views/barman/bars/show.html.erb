@@ -29,7 +29,50 @@
         <li><strong>Prix moyen :</strong> <%= @bar.average_price %> €</li>
         <li><strong>Heures d'ouverture :</strong> <%= @bar.open_at %> - <%= @bar.close_at %></li>
       </ul>
-        <%= link_to "Modifier le bar", edit_barman_bar_path(@bar), class:"button" %>
+        <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#modify-form">
+        Modifier le bar
+        </button>
+        <div class="modal fade" id="modify-form" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title" id="staticBackdropLabel">Modifier: <%= @bar.name %></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="d-flex justify-content-center w-100">
+                  <%= simple_form_for [:barman, @bar], html: { class: "formulary-card form-width"} do |f| %>
+                    <div class="d-flex">
+                      <div class="left-col">
+                        <h6><%= f.input :name, input_html: { class: "custom-box-shadow" } %></h6>
+                        <h6><%= f.input :address, placeholder: "test",
+                          input_html: {data: {address_autocomplete_target: "address"}, class: "d-none" },
+                          wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]} }
+                          %></h6>
+                        <h6><%= f.input :category, collection: Bar::CATEGORY, input_html: { class: "custom-box-shadow" } %></h6>
+                        <h6><%= f.input :description, input_html: { class: "custom-box-shadow" } %></h6>
+                        <h6><%= f.association :tags, as: :check_boxes,
+                          include_hidden: false,
+                          input_html: { class: "tag-selector" },
+                          item_wrapper_class: 'tag-item' %></h6>
+                      </div>
+                      <div class="right-col">
+                        <h6><%= f.input :average_price, input_html: { class: "custom-box-shadow" } %></h6>
+                        <h6><%= f.input :open_at, input_html: { class: "custom-box-shadow" } %></h6>
+                        <h6><%= f.input :close_at, input_html: { class: "custom-box-shadow" } %></h6>
+                        <h6><%= f.input :photos, as: :file, input_html: { multiple: true } %></h6>
+                        <h6><%= f.submit "Éditer votre Bar", class:"navbar_button"%></h6>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="button" data-bs-dismiss="modal">Fermer</button>
+            </div>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 
@@ -44,9 +87,27 @@
                 <p>au : <%= promo.end_date %></p>
                 <div class="mt-auto d-flex justify-content-center box-button">
                 <%= link_to "Modifier la promotion",  edit_barman_bar_promotion_path(@bar, promo), class:"button" %>
-                <%= link_to barman_bar_promotion_path(@bar, promo), class: 'text-decoration-none', data: {turbo_method: :delete, turbo_confirm: "Êtes-vous certain?"} do %>
-                <button class="button-card-barman-delete"><i class="fa-solid fa-trash fa-sm"></i></button>
-                <% end %>
+                <button type="button" class="button button-card-barman-delete" data-bs-toggle="modal" data-bs-target="#delete-modal"><i class="fa-solid fa-trash fa-sm"></i></button>
+
+                <div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Êtes-vous certain de vouloir supprimer cette promotion?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="button" data-bs-dismiss="modal">NON</button>
+                        <%= link_to "OUI", barman_bar_promotion_path(@bar, promo), data: {turbo_method: :delete}, class:"button" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
                 </div>
               </div>
           <% end %>
