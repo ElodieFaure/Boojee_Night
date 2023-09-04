@@ -7,7 +7,14 @@ module Barman
 
     def show
       @bar = Bar.find(params[:id])
-      @promos = @bar.promotions
+      @promotion = Promotion.new
+      @promos = @bar.promotions.select_upcoming.order_by_start_asc
+      if params[:select] == "upcoming"
+        @promos = @bar.promotions.select_upcoming.order_by_start_asc
+      end
+      if params[:select] == "past"
+        @promos = @bar.promotions.select_past.order_by_start_asc
+      end
     end
 
     def new
