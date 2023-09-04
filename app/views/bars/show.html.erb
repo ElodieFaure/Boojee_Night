@@ -70,6 +70,7 @@
     <ul class="review-list">
       <% @bar.reviews.each do |review| %>
         <li class="review-item">
+          <p><em><%= review.booking.user.first_name.capitalize %> le <%= review.created_at.strftime("%d/%m/%y") %></em></p>
           <p class="rating"><strong>Évaluation :</strong> <%= review.rating %> / 5</p>
           <p><%= review.content %></p>
         </li>

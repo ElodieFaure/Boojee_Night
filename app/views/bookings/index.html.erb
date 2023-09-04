@@ -1,7 +1,12 @@
 
 <div class="bar-card-show p-3 m-3">
 <div class="container">
+  <div class="d-flex-start">
   <h1>Vos réservations</h1>
+  <h6 class= "select-show" ><%= link_to 'à venir', :select => "pending" %></h6>
+  <h6 class= "select-show" ><%= link_to 'utilisée', :select => "used" %></h6>
+  <h6 class= "select-show" ><%= link_to 'expirée', :select => "expired" %></h6>
+  </div>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -33,8 +38,25 @@
               <% booking.pending! %>
               <td><%= booking.qr_progress_labels[booking.qr_progress.to_sym] %></td>
             <% end %>
-          <td><%= link_to '🗑', booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "êtes-vous sûr?"}  %></td>
-          <td><%= link_to '📝', new_booking_review_path(booking)  %></td>
+            <td class="text-center">
+              <%= link_to booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "êtes-vous sûr?"} do %>
+                <%= icon('fa-solid', 'trash-can', style: 'color: #eb417a')%></i>
+              <% end %>
+            </td>
+
+          <% if booking.used? %>
+            <td class="text-center">
+            <%= link_to new_booking_review_path(booking) do %>
+              <i class="fa-solid fa-pen-to-square" style="color: #ec407a;"></i>
+            <% end %>
+            </td>
+          <% else %>
+            <td class="text-center">
+                <%= link_to "#", data: { turbo_notice: "Vous devez utiliser votre promotion pour pouvoir laiser un commentaire."} do %>
+                  <i class="fa-solid fa-pen-to-square" style="color: #727379;"></i>
+                <% end %>
+            </td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
