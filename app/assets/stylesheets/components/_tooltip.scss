@@ -1,0 +1,25 @@
+.my-tooltip{
+  background-color: #ffffff;
+  color: rgb(2, 2, 2);
+  width: 250px;
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px solid #ec407a;
+  //box-shadow: 3px 3px 1px #D1D4FF;
+  text-align: center;
+  top: 10px;
+  left: -250px;
+}
+
+progress {
+  width: 230px;
+  height: 20px;
+  border-radius: 5px;
+  border: 1px solid #ec407a;
+}
+progress::-webkit-progress-bar {
+  background-color: #eaa4bc;
+}
+progress::-webkit-progress-value {
+  background-color: #ec407a;
+}

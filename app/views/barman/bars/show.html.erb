@@ -40,13 +40,23 @@
       <div class="d-flex justify-content-center">
           <% @promos.each do |promo| %>
               <div class="promo-card mx-3">
-                <h6><%= promo.name %></h6>
+                <div class="row">
+                  <div class="col-2"></div>
+                  <h6 class="col-8"><%= promo.name %></h6>
+                  <div class="col-2 position-relative" data-controller="tooltip">
+                    <i class="fa-solid fa-circle-info fa-lg" style="color: #ec407a;" data-action="mouseover->tooltip#fire mouseout->tooltip#unfire">
+                    </i>
+                      <div class="my-tooltip position-absolute d-none" data-tooltip-target="card">
+                          <h6>Réservations</h6>
+                          <p> Total : <%= promo.bookings.size %></p>
+                          <p class="mt-1"><small><em>Taux d'utilisation</em></small></p>
+                          <progress value="<%= ((promo.bookings.select_used.size).fdiv(promo.bookings.size)) * 100 %>" max="100"></progress>
+                      </div>
+                  </div>
+                </div>
                 <p><i class="fa-solid fa-gift" style="color: #ec407a;"></i> <%= promo.offer %></p>
                 <p>du : <%= promo.start_date.strftime("%d/%m/%y") %> au : <%= promo.end_date.strftime("%d/%m/%y") %></p>
                 <div class="mt-auto d-flex justify-content-center box-button">
-                  <button class="button-card-barman-delete" >
-                    <i class="fa-solid fa-circle-info" style="color: #ec407a;" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= pluralize(promo.bookings.size, "réservation") %>"></i>
-                  </button>
                   <%= link_to "Modifier la promotion",  edit_barman_bar_promotion_path(@bar, promo), class:"button" %>
                   <%= link_to barman_bar_promotion_path(@bar, promo), class: 'text-decoration-none', data: {turbo_method: :delete, turbo_confirm: "Êtes-vous certain?"} do %>
                     <button class="button-card-barman-delete"><i class="fa-solid fa-trash fa-sm"></i></button>
