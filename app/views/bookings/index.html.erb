@@ -14,18 +14,21 @@
         <th scope="col">Promotion</th>
         <th scope="col">Bar</th>
         <th scope="col">Validité</th>
+        <th scope="col">QR CODE</th>
         <th scope="col">Status</th>
         <th scope="col">Annuler</th>
         <th scope="col">Commenter</th>
       </tr>
     </thead>
     <tbody>
-      <% @bookings.each do |booking| %>
+      <% @bookings.each_with_index do |booking, index| %>
         <tr>
           <th scope="row"></th>
           <td><%= booking.promotion.name%></td>
           <td><%= link_to booking.promotion.bar.name, bar_path(booking.promotion.bar)%></td>
           <td>du <%= booking.promotion.start_date.strftime("%d %b").downcase%>  au <%= booking.promotion.end_date.strftime("%d %b").downcase%></td>
+          <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#qr-modal-<%= booking.id%>">
+          Launch demo modal</button></td>
             <% if booking.used? %>
               <td><%= booking.qr_progress_labels[booking.qr_progress.to_sym]%></td>
             <% elsif  Date.today > booking.promotion.end_date %>
@@ -56,6 +59,19 @@
             </td>
           <% end %>
         </tr>
+<div class="modal fade" id="qr-modal-<%= booking.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= @qr_codes[index].html_safe %>
+      </div>
+    </div>
+  </div>
+</div>
       <% end %>
     </tbody>
   </table>
