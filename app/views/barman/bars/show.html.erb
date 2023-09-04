@@ -34,7 +34,9 @@
   </div>
 
   <div class="bar-info row justify-content-around m-3 p-3">
-     <ul><h3 class=>Mes promotions en cours</h3></ul>
+     <ul><h3 class=>Mes promotions en cours et à venir</h3></ul>
+     <h6 class= "select-show" ><%= link_to 'en cours / à venir', :select => "upcoming" %></h6>
+     <h6 class= "select-show" ><%= link_to 'passées', :select => "past" %></h6>
       <div class="d-flex justify-content-center">
           <% @promos.each do |promo| %>
               <div class="promo-card mx-3">
@@ -43,10 +45,10 @@
                 <p>du : <%= promo.start_date %></p>
                 <p>au : <%= promo.end_date %></p>
                 <div class="mt-auto d-flex justify-content-center box-button">
-                <%= link_to "Modifier la promotion",  edit_barman_bar_promotion_path(@bar, promo), class:"button" %>
-                <%= link_to barman_bar_promotion_path(@bar, promo), class: 'text-decoration-none', data: {turbo_method: :delete, turbo_confirm: "Êtes-vous certain?"} do %>
-                <button class="button-card-barman-delete"><i class="fa-solid fa-trash fa-sm"></i></button>
-                <% end %>
+                  <%= link_to "Modifier la promotion",  edit_barman_bar_promotion_path(@bar, promo), class:"button" %>
+                  <%= link_to barman_bar_promotion_path(@bar, promo), class: 'text-decoration-none', data: {turbo_method: :delete, turbo_confirm: "Êtes-vous certain?"} do %>
+                    <button class="button-card-barman-delete"><i class="fa-solid fa-trash fa-sm"></i></button>
+                  <% end %>
                 </div>
               </div>
           <% end %>

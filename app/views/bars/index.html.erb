@@ -56,7 +56,15 @@
             <div class="bar-card-flex-title">
               <h2 class="bar-name"><strong><%= bar.name %></strong></h2>
                 <div class="rating-position">
-                <%# <h2 class="rating"><%= bar.reviews.last.rating %>/5</h2>
+                <% if !bar.reviews.empty? %>
+                  <% sum = 0 %>
+                  <% total_reviews = bar.reviews.count %>
+                    <% bar.reviews.each do |review| %>
+                      <%  sum += review.rating%>
+                    <% end %>
+                  <% avg = (sum/total_reviews) %>
+                  <h2> <%= avg %> ⭐️ </h2>
+                <% end %>
               </div>
             </div>
 
@@ -72,7 +80,7 @@
             </div>
 
             <div class="bar-card-flex-promo">
-              <% bar.promotions.each do |promo| %>
+              <% bar.promotions.where("promotions.end_date > ?", Date.today).order_by_start_asc.limit(3).each do |promo| %>
               <p class="promo-card-index"><strong><%= promo.name %></strong></p>
               <% end %>
             </div>

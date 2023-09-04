@@ -1,6 +1,16 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.where(user: current_user)
+    @bookings = Booking.where(user: current_user).order_start_by_asc
+
+    if params[:select] == "pending"
+      @bookings = @bookings.select_pending.order_start_by_asc
+    end
+    if params[:select] == "used"
+      @bookings = @bookings.select_used.order_start_by_asc
+    end
+    if params[:select] == "expired"
+      @bookings = @bookings.select_expired.order_start_by_asc
+    end
     if params[:sort] == "start-asc"
       @bookings = @bookings.order_start_by_asc
     end

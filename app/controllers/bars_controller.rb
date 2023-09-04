@@ -22,7 +22,7 @@ class BarsController < ApplicationController
 
   def show
     @bar = Bar.find(params[:id])
-    @promos = @bar.promotions
+    @promos = @bar.promotions.where("promotions.end_date > ?", Date.today).order_by_start_asc
   end
 
 end
