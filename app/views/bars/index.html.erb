@@ -21,6 +21,13 @@
                             input_html: { class: "tag-selector" },
                             item_wrapper_class: 'tag-item' %>
                   </div>
+                  <div class="form-group col">
+                  <%= f.input :promotions, collection: [["Aujourd'hui", "today"], ["Demain", "tomorrow"]] , as: :check_boxes,
+                            label: "Promotions",
+                            include_hidden: false,
+                            input_html: { class: "tag-selector-date" },
+                            item_wrapper_class: 'tag-item' %>
+                  </div>
               <div class="form-group col d-flex flex-column justify-content-center align-items-center">
               <%= f.submit "Rechercher", class: "button" %>
             <% end %>

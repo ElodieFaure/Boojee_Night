@@ -45,7 +45,8 @@ class BookingsController < ApplicationController
 
     if @booking.update(booking_params)
       redirect_to @booking, notice: 'Votre réservation a été mise à jour avec succès'
-    else render :edit
+    else
+      render :edit
     end
   end
 
