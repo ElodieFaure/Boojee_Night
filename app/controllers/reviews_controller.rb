@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
     @review = Review.new
     @booking = Booking.find(params[:booking_id])
     if @booking.qr_progress != "used"
-      redirect_to bookings_path, notice: "blablablabla"
+      redirect_to bookings_path, notice: "Vous devez utiliser votre promotion avant de pouvoir laisser un commentaires"
     else
       render "new"
     end
