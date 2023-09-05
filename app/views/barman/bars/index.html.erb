@@ -74,10 +74,10 @@
           </div>
 
         <h3><%= link_to bar.name, barman_bar_path(bar), class:'text-decoration-none'%></h3>
-        <button type="button" class="button-card-barman-delete" data-bs-toggle="modal" data-bs-target="#delete-bar"><i class="fa-solid fa-trash fa-sm"></i></button>
+        <button type="button" class="button-card-barman-delete" data-bs-toggle="modal" data-bs-target="#delete-bar<%= bar.id %>"><i class="fa-solid fa-trash fa-sm"></i></button>
 
 
-        <div class="modal fade" id="delete-bar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="delete-bar<%= bar.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
