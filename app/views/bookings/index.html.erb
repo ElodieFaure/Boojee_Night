@@ -76,15 +76,10 @@
           <% end %>
         </tr>
 <div class="modal fade" id="qr-modal-<%= booking.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <%# <div class="modal-content"> %>
-      <%# <div class="custom-modal-header"> %>
-        <%# <h4 class="custom-modal-title" id="exampleModalLabel">Réservation</h4>
-      </div> %>
+  <div class="modal-dialog modal-lg">
       <div class="custom-modal-body">
         <div class="custom-qr-code-class"><%= @qr_codes[index].html_safe %></div>
       </div>
-  <%# </div> %>
 </div>
       <% end %>
     </tbody>
