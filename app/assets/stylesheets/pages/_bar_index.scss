@@ -44,7 +44,7 @@
 
 .bar-card-flex-promo {
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   margin-left: 10px;
   margin-right: 20px;
 }
@@ -58,7 +58,7 @@
   width: auto;
   h3 {
     font-size: 20px;
-    text-align: left;
+    text-align: right;
   }
 }
 

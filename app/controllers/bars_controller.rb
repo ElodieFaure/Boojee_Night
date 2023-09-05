@@ -1,6 +1,14 @@
 class BarsController < ApplicationController
   def index
     @bars = Bar.all
+    if params[:search].present? && !params[:search][:promotions].blank?
+      if params[:search][:promotions] == ["today"]
+        @bars = @bars.joins(:promotions).where("start_date <= ? AND end_date >= ?", Date.today, Date.today)
+      elsif params[:search][:promotions] == ["tomorrow"]
+        @bars = @bars.joins(:promotions).where("start_date <= ? AND end_date >= ?", Date.tomorrow, Date.tomorrow)
+      end
+    end
+
     if params[:search].present? && !params[:search][:tags].blank?
       @bars = @bars.joins(:bar_tags).where(bar_tags: { tag_id: params[:search][:tags] })
     end
@@ -8,7 +16,6 @@ class BarsController < ApplicationController
     if params[:search].present? && !params[:search][:query].blank?
       @bars = @bars.search_by_address(params[:search][:query])
     end
-
     @bars = @bars.geocoded.to_a.uniq
     @markers = @bars.map do |bar|
       {
