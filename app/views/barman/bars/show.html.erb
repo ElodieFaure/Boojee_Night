@@ -48,7 +48,6 @@
                         input_html: {data: {address_autocomplete_target: "address"}, class: "d-none" },
                         wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]} }
                         %></h6>
-                      <h6><%= f.input :category, collection: Bar::CATEGORY, input_html: { class: "custom-box-shadow" } %></h6>
                       <h6><%= f.input :description, input_html: { class: "custom-box-shadow" } %></h6>
                       <h6><%= f.association :tags, as: :check_boxes,
                         include_hidden: false,
@@ -77,8 +76,10 @@
 
   <div class="bar-info row justify-content-around m-3 p-3">
     <ul><h3 class=>Mes promotions en cours et à venir</h3></ul>
+    <div class="AAA">
     <h6 class= "select-show" ><%= link_to 'en cours / à venir', :select => "upcoming" %></h6>
     <h6 class= "select-show" ><%= link_to 'passées', :select => "past" %></h6>
+    </div>
       <div class="d-flex justify-content-center">
           <% @promos.each do |promo| %>
               <div class="promo-card mx-3">
@@ -89,7 +90,7 @@
                     <i class="fa-solid fa-circle-info fa-lg" style="color: #ec407a;" data-action="mouseover->tooltip#fire mouseout->tooltip#unfire">
                     </i>
                       <div class="my-tooltip position-absolute d-none" data-tooltip-target="card">
-                          <h6>Réservations</h6>
+                          <p>Réservations</p>
                           <p> Total : <%= promo.bookings.size %></p>
                           <p class="mt-1"><small><em>Taux d'utilisation</em></small></p>
                           <progress value="<%= ((promo.bookings.select_used.size).fdiv(promo.bookings.size)) * 100 %>" max="100"></progress>
@@ -200,7 +201,7 @@
 
 <div class="bar-info">
     <h3>Commentaires</h3>
-     <% if @bar.reviews.empty? %>
+    <% if @bar.reviews.empty? %>
       <div class="d-flex justify-content-center align-items-center">
         <div class="promo-card mx-3 d-flex justify-content-center">
           <p>Ce bar n'as pas encore de commentaire</p>
