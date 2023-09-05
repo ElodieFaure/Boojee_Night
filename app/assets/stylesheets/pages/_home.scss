@@ -1,7 +1,9 @@
 .home-page-container {
   background-image: url(https://res.cloudinary.com/dci4n2kgm/image/upload/v1693489178/Cocktail_Hour_pku1al.jpg);
   background-position: center;
-  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: calc(100vh - 126px);
   display: flex;
   justify-content: center;
   align-items: center;
