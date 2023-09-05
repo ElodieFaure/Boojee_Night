@@ -51,7 +51,6 @@
   }
 }
 
-
 .tag-selector-date {
   position: absolute;
   transform: scale(0);
@@ -73,4 +72,9 @@
 .tag-selector-date:checked + label {
   background-color: #346faa;
   color: white;
+}
+
+.txt-ss-shadow {
+  text-shadow: none !important;
+
 }

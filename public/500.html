@@ -1,66 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
-
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
-
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+<style>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
+  html {
+    font-family:'Phudu', cursive;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+
+
+.home-page-container {
+  background-image: url(https://res.cloudinary.com/dci4n2kgm/image/upload/v1693489178/Cocktail_Hour_pku1al.jpg);
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.657);
+  border-radius: 3px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 40%;
+}
+
+.title-box {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.button-container {
+  display: flex;
+  gap: 6em;
+  margin-bottom: 4em;
+  text-align: center;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 15px;
+  border-radius: 18px;
+  width: 147px;
+  height: 38px;
+  font-weight: bold;
+  border: 2px solid #555555;
+  transition: 0.3s;
+  box-shadow: 0px 6px 0px -2px rgba(67, 145, 209, 1);
+  background-color: #ec407a;
+}
+
+.button:hover {
+  box-shadow: 0 0 #fff;
+  transform: translateY(1px);
+}
+
+.navbar-lewagon {
+  justify-content: space-between;
+  background: #ec407a;
+  box-shadow: 0px 6px 0px -2px rgba(67, 145, 209, 1);
+  border-radius: 3px solid #555555;
+  z-index: 100;
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 200px;
+}
+
+.nav-link {
+color: white;
+}
+
+.navbar-nav {
+  text-align: right;
+}
+
+.sticky-nav {
+  position: sticky;
+  top: 0px;
+}
+
+
+</style>
+<body>
+
+
+
+
+  <div class="home-page-container">
+    <div class="card">
+    <h1>Bienvenue sur Boojee Night</h1>
+    <p>votre complice ultime pour des soirées inoubliables !
+    Notre plateforme révolutionnaire vous offre la clé d'une expérience nocturne inégalée.
+    Grâce à notre fonction de géolocalisation, découvrez les meilleurs bars et promotions à proximité, vous garantissant une nuit sans pareille, où que vous soyez.</p>
+    <p>Mais avant tout, qui etes-vous ?</p>
+      <div class="title-box">
+        <div class="button-container">
+          <a href="/" class="button"> Je veux boojee tonight</a>
+          <a href="/" class="button"> Je suis barman</a>
+        </div>
+      </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
+
 </body>
 </html>
