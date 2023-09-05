@@ -1,6 +1,7 @@
 module Barman
   class PromotionsController < ApplicationController
     def new
+      raise
       @bar = Bar.find(params[:bar_id])
       @promotion = Promotion.new
     end
