@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.where(user: current_user).order_start_by_asc
+    @bookings = Booking.where(user: current_user).select_not_expired.order_start_by_asc
 
     if params[:select] == "pending"
       @bookings = @bookings.select_pending.order_start_by_asc
@@ -9,20 +9,9 @@ class BookingsController < ApplicationController
       @bookings = @bookings.select_used.order_start_by_asc
     end
     if params[:select] == "expired"
-      @bookings = @bookings.select_expired.order_start_by_asc
+      @bookings = Booking.where(user: current_user).select_expired.order_start_by_asc
     end
-    if params[:sort] == "start-asc"
-      @bookings = @bookings.order_start_by_asc
-    end
-    if params[:sort] == "start-desc"
-      @bookings = @bookings.order_start_by_desc
-    end
-    if params[:sort] == "end-asc"
-      @bookings = @bookings.order_end_by_asc
-    end
-    if params[:sort] == "end-asc"
-      @bookings = @bookings.order_end_by_desc
-    end
+
     @qr_codes = []
     @bookings.each do |booking|
       @qr_codes << RQRCode::QRCode.new(booking.qr_code).as_svg
@@ -62,8 +51,12 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
-    @booking.destroy
-    redirect_to bookings_path
+    if @booking.qr_progress == "pending"
+      @booking.destroy
+      redirect_to bookings_path
+    else
+      redirect_to bookings_path, notice: "Les réservations expirées et utilisées ne peuvent plus être supprimées."
+    end
   end
 
 private

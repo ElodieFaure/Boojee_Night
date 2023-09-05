@@ -25,4 +25,5 @@ class Booking < ApplicationRecord
   scope :select_pending, -> { where(qr_progress: 0) }
   scope :select_used, -> { where(qr_progress: 1) }
   scope :select_expired, -> { where(qr_progress: 2) }
+  scope :select_not_expired, -> { where.not(qr_progress: 2) }
 end
