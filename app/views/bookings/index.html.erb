@@ -82,9 +82,8 @@
         <%# <h4 class="custom-modal-title" id="exampleModalLabel">Réservation</h4>
       </div> %>
       <div class="custom-modal-body">
-      <div class="custom-qr-code-class"> <%= @qr_codes[index].html_safe %></div>
+        <div class="custom-qr-code-class" style="height: 80%;"><%= @qr_codes[index].html_safe %></div>
       </div>
-    </div>
   <%# </div> %>
 </div>
       <% end %>
