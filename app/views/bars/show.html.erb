@@ -1,8 +1,23 @@
 <div class="bar-card-show p-3 m-3">
   <div class="container">
     <div class="row mb-3">
-      <h1><%= @bar.name %></h1>
-      <p><%= @bar.address %></p>
+      <div class="row">
+        <div class="col-6" >
+          <h1><%= @bar.name %></h1>
+          <p><%= @bar.address %></p>
+        </div>
+        <div class="col-6">
+          <div class="booking-status">
+            <% if  @bar.bookings.used.where(user_id:current_user).size < 3  %>
+              <p> Validez <em> <%= 3 - @bar.bookings.used.where(user_id:current_user).size %> QR Code </em> pour débloquer un cadeau chez <%= @bar.name %> </p>
+              <progress value="<%= @bar.bookings.used.where(user_id:current_user).size  %>" max="3"></progress>
+              <% else %>
+              <p>🥳 Bravo vous avez débloqué 1 cadeau </p>
+              <p>Découvrez le dans votre espace <%= link_to "mes réservations", bookings_path %></p>
+              <% end %>
+          </div>
+        </div>
+      </div>
 
       <div id="carouselExampleIndicators" class="carousel slide col-4" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -43,7 +58,7 @@
         <h4>😭</h4>
         </div>
       <% else %>
-        <% @promos.each do |promo| %>
+        <% @promos.where.not(name: "🥳 Avantage fidélité -50% lors de votre prochaine visite!").each do |promo| %>
           <div class="promo-card m-3">
             <h6><%= promo.name %></h6>
             <p><i class="fa-solid fa-gift" style="color: #ec407a;"></i> <%= promo.offer %></p>

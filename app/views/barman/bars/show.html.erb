@@ -80,7 +80,7 @@
         <h6 class= "select-show" ><%= link_to 'passées', :select => "past" %></h6>
       </div>
         <div class="d-flex justify-content-center">
-            <% @promos.each do |promo| %>
+            <% @promos.where.not(name: "🥳 Avantage fidélité -50% lors de votre prochaine visite!").each do |promo| %>
                 <div class="promo-card m-3">
                   <div class="row">
                     <div class="col-2"></div>
