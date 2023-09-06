@@ -16,8 +16,6 @@ class BookingsController < ApplicationController
     @bookings.each do |booking|
       @qr_codes << RQRCode::QRCode.new(booking.qr_code).as_svg
     end
-
-    # @booking = Booking.find(params[:id])
   end
 
   def create
@@ -62,9 +60,9 @@ class BookingsController < ApplicationController
     end
   end
 
-private
+  private
 
   def booking_params
-  params.require(:booking).permit(:qr_progress)
+    params.require(:booking).permit(:qr_progress)
   end
 end

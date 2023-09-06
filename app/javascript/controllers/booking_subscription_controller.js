@@ -3,17 +3,20 @@ import { createConsumer } from "@rails/actioncable"
 
 export default class extends Controller {
   static values = { userId: Number }
-  static targets = ["qrnotification"]
+  static targets = ["notification"]
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
       { channel: "UserChannel", id: this.userIdValue },
       { received: (data) => {
         console.log(data)
-        this.qrnotificationTarget.insertAdjacentHTML("beforeend", data);
+        const openedModal = document.getElementsByClassName("modal show")[0].querySelector(".js-notificaction-qr")
+        console.log(openedModal)
+        console.log(document.getElementsByClassName("modal show")[0].querySelector(".js-notificaction-qr"))
+        openedModal.innerHTML=data;
       }}
     )
-    console.log(this.qrnotificationTarget)
+    console.log(this.notificationTarget)
   }
 
 }
