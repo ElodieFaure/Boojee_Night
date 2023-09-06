@@ -16,8 +16,9 @@ class BookingsController < ApplicationController
     @bookings.each do |booking|
       @qr_codes << RQRCode::QRCode.new(booking.qr_code).as_svg
     end
-  end
 
+    # @booking = Booking.find(params[:id])
+  end
 
   def create
     @promotion = Promotion.find(params[:promotion_id])
@@ -36,6 +37,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     if current_user == @booking.promotion.bar.user
       @booking.update(qr_progress: "used")
+      UserChannel.broadcast_to(@booking.user, render_to_string(partial: "shared/qr_code_flash", locals: { booking: @booking } ) )
     end
     redirect_to barman_bar_path(@booking.promotion.bar)
   end
