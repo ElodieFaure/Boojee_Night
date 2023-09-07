@@ -20,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @bookings.each_with_index do |booking, index| %>
+      <% @bookings.each_with_index do |booking, i| %>
         <tr>
           <th scope="row"></th>
 
@@ -29,34 +29,34 @@
           <td>du <%= booking.promotion.start_date.strftime("%d %b").downcase%>  au <%= booking.promotion.end_date.strftime("%d %b").downcase%></td>
             <% if booking.used? %>
               <td class="text-center">
-              <i class="fa-solid fa-qrcode" style="color: #727379;" ></i>
+              <i class="fa-solid fa-qrcode fa-xl" style="color: #727379;" ></i>
               </td>
               <td><%= booking.qr_progress_labels[booking.qr_progress.to_sym]%></td>
               <td class="text-center">
-                <%= link_to booking_path(booking) do %>
-                  <%= icon('fa-solid', 'trash-can', style: 'color: #727379')%></i>
+                <%= link_to booking_path(booking), data: {turbo_method: :delete } do %>
+                  <%= icon('fa-solid fa-xl', 'trash-can', style: 'color: #727379')%></i>
                 <% end %>
               </td>
             <% elsif  Date.today > booking.promotion.end_date %>
               <%booking.expired! %>
               <td class="text-center">
-              <i class="fa-solid fa-qrcode" style="color: #727379;" ></i>
+              <i class="fa-solid fa-qrcode fa-xl" style="color: #727379;" ></i>
               </td>
               <td><%= booking.qr_progress_labels[booking.qr_progress.to_sym] %></td>
-            <td class="text-center">
-              <%= link_to booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "êtes-vous sûr?"} do %>
-                <%= icon('fa-solid', 'trash-can', style: 'color: #727379')%></i>
-              <% end %>
-            </td>
+              <td class="text-center">
+                <%= link_to booking_path(booking), data: {turbo_method: :delete } do %>
+                  <%= icon('fa-solid fa-xl', 'trash-can', style: 'color: #727379')%></i>
+                <% end %>
+              </td>
             <% else %>
               <% booking.pending! %>
               <td class="text-center">
-              <i class="fa-solid fa-qrcode" style="color: #ec407a;" data-bs-toggle="modal" data-bs-target="#qr-modal-<%= booking.id%>"></i>
+                <i class="fa-solid fa-qrcode fa-xl" style="color: #ec407a;" data-bs-toggle="modal" data-bs-target="#qr-modal-<%= booking.id%>"></i>
               </td>
               <td><%= booking.qr_progress_labels[booking.qr_progress.to_sym] %></td>
             <td class="text-center">
-              <%= link_to booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "êtes-vous sûr?"} do %>
-                <%= icon('fa-solid', 'trash-can', style: 'color: #eb417a')%></i>
+              <%= link_to booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer cette promotion?"} do %>
+                <%= icon('fa-solid fa-xl', 'trash-can', style: 'color: #eb417a')%></i>
               <% end %>
             </td>
             <% end %>
@@ -64,13 +64,13 @@
           <% if booking.used? %>
             <td class="text-center">
             <%= link_to new_booking_review_path(booking) do %>
-              <i class="fa-solid fa-pen-to-square" style="color: #ec407a;"></i>
+              <i class="fa-solid fa-pen-to-square fa-xl" style="color: #ec407a;"></i>
             <% end %>
             </td>
           <% else %>
             <td class="text-center">
                 <%= link_to new_booking_review_path(booking) do %>
-                  <i class="fa-solid fa-pen-to-square" style="color: #727379;"></i>
+                  <i class="fa-solid fa-pen-to-square fa-xl" style="color: #727379;"></i>
                 <% end %>
             </td>
           <% end %>
@@ -89,7 +89,7 @@
               </div>
               <div class="custom-modal-body">
                 <div class="js-notificaction-qr" data-booking-subscription-target="notification">
-                  <div class="custom-qr-code-class"><%= @qr_codes[index].html_safe %></div>
+                  <div class="custom-qr-code-class"><%= @qr_codes[i].html_safe %></div>
                 </div>
               </div>
             </div>

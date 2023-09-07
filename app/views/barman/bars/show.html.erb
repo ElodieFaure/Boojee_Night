@@ -94,9 +94,8 @@
                       </i>
 
                       <div class="my-tooltip position-absolute d-none" data-tooltip-target="card">
-                          <h6>Réservations</h6>
-                          <p> Total : <%= promo.bookings.size %></p>
-                          <p class="mt-1"><small><em>Taux d'utilisation</em></small></p>
+                          <h6>Réservations = <%= promo.bookings.size %> </h6>
+                          <p><small><em>Taux d'utilisation = </em> <%= (((promo.bookings.select_used.size).fdiv(promo.bookings.size)) * 100).to_i %> % </small></p>
                           <progress value="<%= ((promo.bookings.select_used.size).fdiv(promo.bookings.size)) * 100 %>" max="100"></progress>
                       </div>
                     </div>

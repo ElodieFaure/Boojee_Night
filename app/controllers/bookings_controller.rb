@@ -60,6 +60,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     if @booking.qr_progress == "pending"
+
       @booking.destroy
       redirect_to bookings_path
     else
