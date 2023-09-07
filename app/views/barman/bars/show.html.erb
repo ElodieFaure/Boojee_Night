@@ -208,12 +208,11 @@
 
     <%= month_calendar(events: @meetings, end_attribute: :end_time) do |date, meetings| %>
 
-      <%= date %>
+      <%= date.strftime("%d") %>
 
         <% meetings.each do |meeting| %>
           <div class="meeting">
               <p><%= meeting.name %></p>
-              <small><%= meeting.time unless meeting.multi_days? %></small>
             </div>
           <% end %>
       <% end %>
