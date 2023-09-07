@@ -37,9 +37,10 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h3 class="modal-title" id="staticBackdropLabel">Modifier le bar: <%= @bar.name %></h3>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <div class="d-flex justify-content-center w-100">
+                  <div class="d-flex justify-content-center w-100 mb-3">
                     <%= simple_form_for [:barman, @bar], html: { class: "formulary-card form-width", data: { controller: "datepicker" }} do |f| %>
                       <div class="d-flex">
                         <div class="left-col">
@@ -64,9 +65,6 @@
                       </div>
                     <% end %>
                   </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="button" data-bs-dismiss="modal">Fermer</button>
                 </div>
               </div>
             </div>
@@ -113,12 +111,13 @@
                   <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Modifier la promotion</h5>
+                        <h3 class="modal-title" id="staticBackdropLabel">Modifier la promotion</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                      <div class="d-flex justify-content-center w-100">
+                      <div class="d-flex justify-content-center w-100 mb-3">
 
-                            <%= simple_form_for [:barman, @bar, promo], html: { class: "formulary-card form-width", data: { controller: "datepicker" }} do |f| %>
+                            <%= simple_form_for [:barman, @bar, promo], html: { class: "formulary-card form-width py-3", data: { controller: "datepicker" }} do |f| %>
                                 <div class="d-flex">
                                   <div class="left-col">
                             <h6><%= f.input :name, label: "Nom de la promotion", input_html: { class: "custom-box-shadow" } %></h6>
@@ -133,9 +132,7 @@
                           <% end %>
 
                       </div>
-                      <div class="modal-footer">
-                        <button type="button" class="button" data-bs-dismiss="modal">Fermer</button>
-                      </div>
+
 
                     </div>
 
@@ -144,11 +141,7 @@
                 </div>
 
 
-<<<<<<< HEAD
                 <button type="button" class="button button-card-barman-delete" data-bs-toggle="modal" data-bs-target="#delete-modal<%= promo.id %>"><i class="fa-solid fa-trash fa-sm"></i></button>
-=======
-                  <button type="button" class="button button-card-barman-delete" data-bs-toggle="modal" data-bs-target="#delete-modal"><i class="fa-solid fa-trash fa-sm"></i></button>
->>>>>>> dcf7a2d88af8d9227b25a6657f351f9935e1a50c
 
                 <div class="modal fade" id="delete-modal<%= promo.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
@@ -179,9 +172,10 @@
         <div class="modal-content">
           <div class="modal-header">
             <h3 class="modal-title" id="staticBackdropLabel">Nouvelle promotion</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div class="d-flex justify-content-center w-100">
+            <div class="d-flex justify-content-center w-100 mb-3">
 
               <%= simple_form_for [:barman, @bar, @promotion], html: { class: "formulary-card form-width", data: { controller: "datepicker" }} do |f| %>
                   <div class="d-flex">
@@ -199,9 +193,6 @@
               </div>
             </div>
             </div>
-          <div class="modal-footer">
-            <button type="button" class="button" data-bs-dismiss="modal">Fermer</button>
-          </div>
           </div>
         </div>
       </div>
@@ -230,8 +221,8 @@
         <% if @bar.reviews.empty? %>
           <div class="d-flex justify-content-center align-items-center">
             <div class="promo-card mx-3 d-flex justify-content-center">
-              <p>Ce bar n'as pas encore de commentaire</p>
-              <p>Faites des promotions et collectez vos premiers avis</p>
+              <p>Ce bar n'as pas encore de commentaire 🫠</p>
+              <p>Faites des promotions et collectez vos premiers avis ⭐️</p>
             </div>
           </div>
         <% else %>

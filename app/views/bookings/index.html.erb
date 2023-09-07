@@ -24,7 +24,7 @@
         <tr>
           <th scope="row"></th>
 
-          <td><%= booking.promotion.name%></td>
+          <td><%= booking.promotion.name %> <%= booking.id %></td>
           <td><h5><%= link_to booking.promotion.bar.name, bar_path(booking.promotion.bar), class: "text-decoration-none", style:"color: #ec407a;" %></h5></td>
           <td>du <%= booking.promotion.start_date.strftime("%d %b").downcase%>  au <%= booking.promotion.end_date.strftime("%d %b").downcase%></td>
             <% if booking.used? %>
@@ -75,22 +75,13 @@
             </td>
           <% end %>
         </tr>
-<<<<<<< HEAD
-<div class="modal fade" id="qr-modal-<%= booking.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-      <div class="custom-modal-body">
-      <div class="custom-qr-code-class"><%= @qr_codes[index].html_safe %></div>
-      </div>
-    </div>
-</div>
-=======
 
 
     <div class="modal fade" id="qr-modal-<%= booking.id%>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
           <div class="modal-dialog">
             <div class="modal-content">
-              <div class="modal-header">
+              <div class="custom-modal-header">
                 <%= link_to bookings_path(reload: true) do %>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <% end %>
@@ -106,7 +97,6 @@
         </div>
 
 
->>>>>>> dcf7a2d88af8d9227b25a6657f351f9935e1a50c
       <% end %>
     </tbody>
   </table>
