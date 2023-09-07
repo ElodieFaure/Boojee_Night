@@ -76,8 +76,8 @@
 
   <div class="bar-info row justify-content-around m-3 p-3">
     <ul><h3 class="aaa">Mes promotions en cours et à venir</h3></ul>
-    <h6 class= "select-show" ><%= link_to 'en cours / à venir', :select => "upcoming" %></h6>
-    <h6 class= "select-show" ><%= link_to 'passées', :select => "past" %></h6>
+      <h6 class= "select-show" ><%= link_to 'en cours / à venir', :select => "upcoming" %></h6>
+      <h6 class= "select-show" ><%= link_to 'passées', :select => "past" %></h6>
       <div class="d-flex justify-content-center">
           <% @promos.each do |promo| %>
               <div class="promo-card mx-3">
@@ -152,8 +152,6 @@
                     </div>
                   </div>
                 </div>
-
-
                 </div>
               </div>
           <% end %>
@@ -194,6 +192,22 @@
       </div>
     </div>
   </div>
+
+    <div class="calendar-container">
+    
+    <%= month_calendar(events: @meetings, end_attribute: :end_time) do |date, meetings| %>
+
+      <%= date %>
+
+        <% meetings.each do |meeting| %>
+          <div class="meeting">
+              <p><%= meeting.name %></p>
+              <small><%= meeting.time unless meeting.multi_days? %></small>
+            </div>
+          <% end %>
+      <% end %>
+      </div>
+
     <div class="bar-info">
         <h3>Commentaires</h3>
         <% if @bar.reviews.empty? %>

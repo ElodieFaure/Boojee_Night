@@ -16,6 +16,7 @@ module Barman
       if params[:select] == "past"
         @promos = @bar.promotions.select_past.order_by_start_asc
       end
+      @meetings = Meeting.all
     end
 
     def new
