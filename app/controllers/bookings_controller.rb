@@ -26,9 +26,9 @@ class BookingsController < ApplicationController
     @booking.user = current_user
 
     if @booking.save
-      redirect_to bookings_path, notice: "réservation créée"
+      redirect_to bookings_path, notice: "Réservation créée"
     else
-      redirect_to bar_promotion(@promotion), notice: "échec de réservation"
+      redirect_to bar_promotion(@promotion), notice: "Echec de réservation"
     end
 
   end

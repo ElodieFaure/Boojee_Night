@@ -9,14 +9,18 @@ export default class extends Controller {
     if (this.hasStartTimeTarget) {
       flatpickr(this.startTimeTarget, {
         minDate: "today",
-        dateFormat: "d.m.Y",
+        altInput: true,
+        altFormat: "d.m.Y",
+        dateFormat: "Z",
       })
     }
 
     if (this.hasEndTimeTarget) {
       flatpickr(this.endTimeTarget, {
         minDate: "today",
-        dateFormat: "d.m.Y",
+        altInput: true,
+        altFormat: "d.m.Y",
+        dateFormat: "Z",
       })
     }
 
