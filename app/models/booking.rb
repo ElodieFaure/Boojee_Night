@@ -1,6 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :promotion
+  has_one :bar, through: :promotion
   has_one :review, dependent: :destroy
   enum :qr_progress, [:pending, :used, :expired]
 

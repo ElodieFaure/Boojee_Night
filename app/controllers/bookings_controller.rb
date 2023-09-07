@@ -18,8 +18,8 @@ class BookingsController < ApplicationController
     end
   end
 
-
   def create
+
     @promotion = Promotion.find(params[:promotion_id])
     @booking = Booking.new
     @booking.promotion = @promotion
@@ -30,12 +30,18 @@ class BookingsController < ApplicationController
     else
       redirect_to bar_promotion(@promotion), notice: "échec de réservation"
     end
+
   end
 
   def edit
     @booking = Booking.find(params[:id])
     if current_user == @booking.promotion.bar.user
       @booking.update(qr_progress: "used")
+      if @booking.bar.bookings.where(user: @booking.user).used.size == 3
+        @promo_gift = Promotion.create(name: "🥳 Avantage fidélité -50% lors de votre prochaine visite!", bar_id: @booking.bar.id, offer:"-50% lors de votre prochaine visite!", start_date: Date.today, end_date: (Date.today + 7) )
+        Booking.create(user: @booking.user, promotion_id: @promo_gift.id)
+      end
+      UserChannel.broadcast_to(@booking.user, render_to_string(partial: "shared/qr_code_flash", locals: { booking: @booking } ) )
     end
     redirect_to barman_bar_path(@booking.promotion.bar)
   end
@@ -48,6 +54,7 @@ class BookingsController < ApplicationController
     else
       render :edit
     end
+
   end
 
   def destroy
@@ -60,9 +67,9 @@ class BookingsController < ApplicationController
     end
   end
 
-private
+  private
 
   def booking_params
-  params.require(:booking).permit(:qr_progress)
+    params.require(:booking).permit(:qr_progress)
   end
 end
