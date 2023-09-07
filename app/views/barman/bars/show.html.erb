@@ -138,13 +138,13 @@
               </div>
 
 
-                <button type="button" class="button button-card-barman-delete" data-bs-toggle="modal" data-bs-target="#delete-modal"><i class="fa-solid fa-trash fa-sm"></i></button>
+                <button type="button" class="button button-card-barman-delete" data-bs-toggle="modal" data-bs-target="#delete-modal<%= promo.id %>"><i class="fa-solid fa-trash fa-sm"></i></button>
 
-                <div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="delete-modal<%= promo.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h4 class="modal-title" id="exampleModalLabel">Êtes-vous certain de vouloir supprimer cette promotion?</h4>                      </div>
+                        <h4 class="modal-title" id="exampleModalLabel">Êtes-vous certain de vouloir supprimer cette promotion?</h4></div>
                       <div class="modal-footer">
                         <button type="button" class="button" data-bs-dismiss="modal">NON</button>
                         <%= link_to "OUI", barman_bar_promotion_path(@bar, promo), data: {turbo_method: :delete}, class:"button" %>
@@ -200,7 +200,7 @@
           <div class="d-flex justify-content-center align-items-center">
             <div class="promo-card mx-3 d-flex justify-content-center">
               <p>Ce bar n'as pas encore de commentaire</p>
-              <p>Laisserez-vous le prochain ?</p>
+              <p>Faites des promotions et collectez vos premiers avis</p>
             </div>
           </div>
         <% else %>
