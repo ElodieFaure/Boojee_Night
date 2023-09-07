@@ -13,16 +13,24 @@
           </div>
         <% end %>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    
-      
+
+      <p><%= @bar.address%></p>
+      <div id="carouselExampleIndicators" class="carousel slide col-4" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <% @bar.photos.each_with_index do |photo, index| %>
+            <div class="carousel-item <%= "active" if index == 0 %>">
+            <%= cl_image_tag photo.key, :width => 300, :crop => "pad", class: 'd-block w-100 rounded-2', style: 'height: 300px; object-fit: cover;' %>
+            </div>
+          <% end %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
       <div class="col-8">
         <ul><h3>Informations</h3>
@@ -30,9 +38,9 @@
           <li><strong>Prix moyen :</strong> <%= @bar.average_price %> €</li>
           <li><strong>Heures d'ouverture :</strong> <%= @bar.open_at.strftime("%H:%M") %> - <%= @bar.close_at.strftime("%H:%M") %></li>
         </ul>
-          <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#modify-form">
+          <div class="btn-modifier"><button type="button" class="button" data-bs-toggle="modal" data-bs-target="#modify-form">
           Modifier le bar
-          </button>
+          </button></div>
           <div class="modal fade" id="modify-form" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
@@ -229,8 +237,9 @@
         <% if @bar.reviews.empty? %>
           <div class="d-flex justify-content-center align-items-center">
             <div class="promo-card mx-3 d-flex justify-content-center">
-              <p>Ce bar n'as pas encore de commentaire 🫠</p>
+              <p>Votre bar n'a pas de commentaire… 🫠</p>
               <p>Faites des promotions et collectez vos premiers avis ⭐️</p>
+
             </div>
           </div>
         <% else %>

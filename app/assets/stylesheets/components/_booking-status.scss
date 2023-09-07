@@ -1,9 +1,21 @@
 .booking-status {
+  width: auto;
+  position: absolute;
+  right: 17px;
+  top: 97px;
   text-align: center;
-  background-color: white;
-  border: 1px solid #EC407A;
-  border-radius: 3px;
-  padding: 8px;
+  background-color: #C3DAE8;
+  color: black;
+  text-decoration: none;
+  border-radius: 3px 0px 0px 3px;
+  padding: 8px 25px 8px 25px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  height: 80px;
+  height: auto;
+}
+
+.progress-container {
+  display: flex;
+  background-color: #ccc;
+  height: 20px;
+  margin-top: 10px;
 }

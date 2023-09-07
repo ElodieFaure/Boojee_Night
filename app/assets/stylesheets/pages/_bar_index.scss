@@ -1,8 +1,4 @@
-.address-avg-price {
-  text-align: left;
-  padding-left: 10px;
-  margin-bottom: 10px;
-}
+
 
 .tags-style-bar {
   font-size: 0.5rem;
@@ -44,7 +40,7 @@
 
 .bar-card-flex-promo {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   margin-left: 10px;
   margin-right: 20px;
 }
@@ -66,19 +62,14 @@
   width: 150px;
 }
 
-.address-avg-price {
-  p{
-    margin-top: 0;
-    margin-bottom: 8px !important;
-  }
+
+
+.form-group label {
+    font-size: 14px; /* Ajustez la taille de police selon vos besoins */
+    padding-right: 10px; /* Ajustez l'espacement à droite du label selon vos besoins */
 }
 
-.tag-de-tag {
-  text-align: left;
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  max-width: 260px;
-  margin-left: 10px;
-  font-size: medium;
+/* Styliser les tags */
+.tag-selector label {
+    font-size: 12px; /* Ajustez la taille de police des tags selon vos besoins */
 }
