@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if current_user&.category == "client" %>
-          <li class="nav-item active"><%= link_to "Acceuil", root_path, class: "nav-link" %></li>
+          <li class="nav-item active"><%= link_to "Accueil", root_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to "Bars", bars_path, class: "nav-link" %></li>
           <a href="#" class="nav-link" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></a>
@@ -20,7 +20,7 @@
               <%= link_to "Déconnexion", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
         <% elsif current_user&.category == "bar" %>
-          <li class="nav-item active"><%= link_to "Acceuil", root_path, class: "nav-link" %></li>
+          <li class="nav-item active"><%= link_to "Accueil", root_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to "Bars", bars_path, class: "nav-link" %></li>
           <a href="#" class="nav-link" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></a>
