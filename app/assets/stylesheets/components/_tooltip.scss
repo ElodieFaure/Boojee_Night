@@ -1,7 +1,7 @@
 .my-tooltip{
   background-color: #ffffff;
   color: rgb(2, 2, 2);
-  width: 250px;
+  width: 300px;
   padding: 8px;
   border-radius: 3px;
   border: 1px solid #ec407a;
@@ -10,6 +10,21 @@
   top: 10px;
   left: -250px;
   text-shadow: white;
+  z-index: 9999;
+}
+.my-tooltip-2{
+  background-color: #ffffff;
+  color: rgb(2, 2, 2);
+  width: 300px;
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px solid #ec407a;
+  //box-shadow: 3px 3px 1px #D1D4FF;
+  text-align: center;
+  top: 10px;
+  left: -350px;
+  text-shadow: white;
+  z-index: 9999;
 }
 
 progress {

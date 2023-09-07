@@ -1,25 +1,27 @@
 
-<div class="page-container">
-  <div class="formulary-card">
-    <h5>
-      Commenter votre expérience chez <%= @booking.promotion.bar.name.capitalize %>
-    </h5>
-    <%= simple_form_for [@booking, @review] do |f| %>
-      <h6>
-        <%= f.input :rating,
-                    collection: (1..5).to_a,
-                    label: "Laisser une note à votre expérience",
-                    input_html: {data: {controller: "star-rating"}} %>
-      </h6>
-      <h6>
-        <%= f.input :content,
-                    as: :text,
-                    label: "Commentaire",
-                    input_html: { class: "custom-box-shadow" }%>
-      </h6>
-      <h6>
-        <%= f.submit 'Soumettre mon commentaire', class:"navbar_button" %>
-      </h6>
-    <% end %>
+
+  <div class="container">
+    <h1 class="my-3"> <%= @booking.promotion.bar.name.capitalize %> vous remercie pour votre visite <%= @booking.user.first_name %>  </h1>
+    <div class="formulary-card">
+      <h5>
+        Commenter votre expérience lors de l'évènement <%= @booking.promotion.name.capitalize %>
+      </h5>
+      <%= simple_form_for [@booking, @review] do |f| %>
+        <h6>
+          <%= f.input :rating,
+                      collection: (1..5).to_a,
+                      label: "Laisser une note à votre expérience",
+                      input_html: {data: {controller: "star-rating"}} %>
+        </h6>
+        <h6>
+          <%= f.input :content,
+                      as: :text,
+                      label: "Commentaire",
+                      input_html: { class: "custom-box-shadow" }%>
+        </h6>
+        <h6>
+          <%= f.submit 'Soumettre mon commentaire', class:"navbar_button" %>
+        </h6>
+      <% end %>
+    </div>
   </div>
-</div>

@@ -50,7 +50,6 @@
       </div>
     </div>
 
-
   </div>
     <div class="cards-barman">
       <% @bars.each do |bar| %>
@@ -64,14 +63,14 @@
 
 
           <div class="position-relative position-absolute info" data-controller="tooltip">
-            <i class="fa-solid fa-info button-card-barman-info" style="color: #ffffff;" data-action="mouseover->tooltip#fire mouseout->tooltip#unfire">
-
-
+            <div class="fit-content" data-action="mouseover->tooltip#fire mouseout->tooltip#unfire">
+            <i class="fa-solid fa-info button-card-barman-info" style="color: #ffffff;" >
             </i>
+            </div>
 
 
 
-              <div class="my-tooltip position-absolute d-none" data-tooltip-target="card">
+              <div class="my-tooltip-2 position-absolute d-none" data-tooltip-target="card">
                   <h6 class="txt-ss-shadow">Promotion en cours et à venir</h6>
                   <h5 class="txt-ss-shadow"> Total : <%= bar.promotions.select_upcoming.size %></h5>
               </div>

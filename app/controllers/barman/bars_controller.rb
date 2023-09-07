@@ -31,6 +31,7 @@ module Barman
         @tags.each do |tag|
           BarTag.new(bar: @bar, tag: tag)
         end
+        @bars = Bar.where(user_id: current_user.id).order('name ASC')
         redirect_to barman_bars_path, notice: 'Votre bar a été crée avec succès'
       else
         render "barman/bars/new", status: :unprocessable_entity
