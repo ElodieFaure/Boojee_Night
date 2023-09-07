@@ -14,7 +14,7 @@
               <progress value="<%= @bar.bookings.used.where(user_id:current_user).size  %>" max="3"></progress> <span class="titi"> <%=  @bar.bookings.used.where(user_id:current_user).size %>/ 3</span>
               <% else %>
               <H5>🥳 Bravo vous avez débloqué 1 cadeau </H5>
-              <H5>Découvrez le dans votre espace <%= link_to "mes réservations", bookings_path %></H5>
+              <H5 class="toto">Découvrez le dans votre espace <%= link_to "mes réservations", bookings_path %></H5>
               <% end %>
           </div>
         </div>

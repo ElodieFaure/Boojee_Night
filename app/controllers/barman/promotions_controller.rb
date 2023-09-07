@@ -10,7 +10,7 @@ module Barman
       @promotion = Promotion.new(promotion_params)
       @promotion.bar_id = @bar.id
       if @promotion.save
-        redirect_to barman_bar_path(@bar), notice: 'Votre promotion a été crée avec succès !'
+        redirect_to barman_bar_path(@bar), notice: 'Votre promotion a été créée avec succès !'
       end
     end
 
@@ -23,7 +23,7 @@ module Barman
       @bar = Bar.find(params[:bar_id])
       @promotion = Promotion.find(params[:id])
       @promotion.update(promotion_params)
-      redirect_to barman_bar_path(@bar), notice: 'Votre promotion a été modifié avec succès !'
+      redirect_to barman_bar_path(@bar), notice: 'Votre promotion a été modifiée avec succès !'
     end
 
     def destroy
