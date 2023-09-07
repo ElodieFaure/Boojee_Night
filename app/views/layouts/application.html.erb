@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://ga.jspm.io/npm:star-rating.js@4.3.0/dist/star-rating.css">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= favicon_link_tag "favicon.png", rel: "icon", type: "image/png" %>
   </head>
 
-  <body>
+  <body <%= current_user ? "data-controller=booking-subscription data-booking-subscription-user-id-value= #{current_user.id}" : "" %>>
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
     <div class="content"><%= yield %></div>

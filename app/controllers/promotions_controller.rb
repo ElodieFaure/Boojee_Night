@@ -3,5 +3,4 @@ class PromotionsController < ApplicationController
     @promotion = Promotion.find(params[:id])
     @booking = Booking.new
   end
-
 end

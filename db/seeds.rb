@@ -13,6 +13,7 @@ BarTag.destroy_all
 Tag.destroy_all
 Bar.destroy_all
 User.destroy_all
+Meeting.destroy_all
 
 paul = User.create!(first_name: "Paul", last_name: "dupont", email: "paul@bla.com", password: "azerty", category: "bar")
 jacques = User.create!(first_name: "Jacques", last_name: "Martin", email: "jacques@bla.com", password: "azerty", category: "bar")
@@ -61,10 +62,10 @@ promo_14 = Promotion.create!(name: "Menu Étudiant", offer: "Menu complet à -25
 promo_15 = Promotion.create!(name: "Saint-Valentin Romantique", offer: "Dîner aux chandelles avec une bouteille de vin offerte", start_date: "14/02/2024", end_date: "14/02/2024", bar_id: bar_5.id)
 
 booking_1 = Booking.create!(user_id: etienne.id, promotion_id: promo_1.id, qr_progress: 1)
-booking_2 = Booking.create!(user_id: etienne.id, promotion_id: promo_2.id)
+booking_2 = Booking.create!(user_id: etienne.id, promotion_id: promo_2.id, qr_progress: 1)
 booking_3 = Booking.create!(user_id: etienne.id, promotion_id: promo_3.id)
-booking_4 = Booking.create!(user_id: etienne.id, promotion_id: promo_4.id)
-booking_5 = Booking.create!(user_id: etienne.id, promotion_id: promo_5.id)
+booking_4 = Booking.create!(user_id: etienne.id, promotion_id: promo_4.id, qr_progress: 1)
+booking_5 = Booking.create!(user_id: etienne.id, promotion_id: promo_5.id, qr_progress: 1)
 booking_6 = Booking.create!(user_id: etienne.id, promotion_id: promo_6.id)
 booking_7 = Booking.create!(user_id: etienne.id, promotion_id: promo_7.id)
 booking_8 = Booking.create!(user_id: etienne.id, promotion_id: promo_8.id)
@@ -112,3 +113,14 @@ bar_tag_16 = BarTag.create!(bar_id: bar_16.id, tag_id: tag_10.id)
 bar_tag_17 = BarTag.create!(bar_id: bar_17.id, tag_id: tag_12.id)
 
 puts "all created"
+
+# BORDEAUX MEETINGS
+meeting_1= Meeting.create!(name: "Naâman", address: "18 Cours Barbey, 33800 Bordeaux", start_date: "23/09/10", end_date: "23/09/10", start_time: DateTime.new(2023,9,10), end_time: DateTime.new(2023,9,10))
+meeting_2= Meeting.create!(name: "Sopycal: Coeur Full KO Party", address: "4 Rue Achard, 33300 Bordeaux", start_date: "23/09/12", end_date: "23/09/12", start_time: DateTime.new(2023,9,12), end_time: DateTime.new(2023,9,12))
+meeting_3= Meeting.create!(name: "L'indomptable Flow Festival", address: "18 Cours Barbey, 33800 Bordeaux", start_date: "23/09/14", end_date: "23/09/14", start_time: DateTime.new(2023,9,14), end_time: DateTime.new(2023,9,14))
+meeting_4= Meeting.create!(name: "The Weekend", address: "50 Avenue Jean Alfonséa, 33270 Floirac", start_date: "23/09/18", end_date: "23/09/18", start_time: DateTime.new(2023,9,18), end_time: DateTime.new(2023,9,18))
+meeting_5= Meeting.create!(name: "Henri Dès", address: "13 Cours Georges Clemenceau, 33000 Bordeaux", start_date: "23/09/22", end_date: "23/09/22", start_time: DateTime.new(2023,9,22), end_time: DateTime.new(2023,9,22))
+meeting_6= Meeting.create!(name: "BigFlo & Oli", address: "50 Avenue Jean Alfonséa, 33270 Floirac", start_date: "23/09/24", end_date: "23/09/24", start_time: DateTime.new(2023,9,24), end_time: DateTime.new(2023,9,24))
+meeting_7= Meeting.create!(name: "Metronomy", address: "50 Avenue Jean Alfonséa, 33270 Floirac", start_date: "23/09/25", end_date: "23/09/25", start_time: DateTime.new(2023,9,25), end_time: DateTime.new(2023,9,25))
+meeting_8= Meeting.create!(name: "L'Impératrice", address: "13 Cours Georges Clemenceau, 33000 Bordeaux", start_date: "23/09/28", end_date: "23/09/28", start_time: DateTime.new(2023,9,28), end_time: DateTime.new(2023,9,28))
+meeting_9= Meeting.create!(name: "Francis Cabrel", address: "13 Cours Georges Clemenceau, 33000 Bordeaux", start_date: "23/09/30", end_date: "23/09/30", start_time: DateTime.new(2023,9,30), end_time: DateTime.new(2023,9,30))

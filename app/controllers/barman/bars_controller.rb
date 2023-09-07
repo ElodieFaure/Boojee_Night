@@ -16,6 +16,7 @@ module Barman
       if params[:select] == "past"
         @promos = @bar.promotions.select_past.order_by_start_asc
       end
+      @meetings = Meeting.all
     end
 
     def new
@@ -30,7 +31,7 @@ module Barman
         @tags.each do |tag|
           BarTag.new(bar: @bar, tag: tag)
         end
-        redirect_to barman_bars_path, notice: 'Bar was successfully created'
+        redirect_to barman_bars_path, notice: 'Votre bar a été crée avec succès'
       else
         render "barman/bars/new", status: :unprocessable_entity
       end
