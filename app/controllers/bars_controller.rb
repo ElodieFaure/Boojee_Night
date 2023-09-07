@@ -6,6 +6,8 @@ class BarsController < ApplicationController
         @bars = @bars.joins(:promotions).where("start_date <= ? AND end_date >= ?", Date.today, Date.today)
       elsif params[:search][:promotions] == ["tomorrow"]
         @bars = @bars.joins(:promotions).where("start_date <= ? AND end_date >= ?", Date.tomorrow, Date.tomorrow)
+      else
+        @bars = @bars.joins(:promotions).where.not(promotions: nil)
       end
     end
 

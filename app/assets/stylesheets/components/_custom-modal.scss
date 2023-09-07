@@ -1,16 +1,11 @@
 .custom-modal-body {
   display: flex;
   justify-content: center;
-  background-color: #ec407a;
+  background-color: white;
   margin-top: 2em;
   border: solid ;
   border-color: black;
   padding: 20px;
   box-shadow: 12px 12px 2px 1px rgba(67, 145, 209, 1);
+  height: 80%;
 }
-
-// .custom-qr-code-class {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }

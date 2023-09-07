@@ -7,26 +7,26 @@
           <div class="col-md-12">
             <div class="row justify-content-around">
               <div class="card-body">
-                <%= simple_form_for :search, url: bars_path, method: :get, html:{class: "d-flex gap-5"} do |f| %>
+                <%= simple_form_for :search, url: bars_path, method: :get, html:{class: "d-flex gap-5 align-items-center"} do |f| %>
                   <div class="form-group col-3 ">
-                    <%= f.input :query,
-                                label: "Recherche par adresse, ville ou code postal",
+                    <h5><%= f.input :query,
+                                label: "OU ?",
                                 class: "form-control search-input",
-                                placeholder: "Entrez une adresse, ville ou code postal" %>
+                                placeholder: "Entrez une adresse, ville ou code postal" %></h5>
                   </div>
-                  <div class="form-group col-3">
-                  <%= f.input :tags, collection: Tag.all, as: :check_boxes,
-                            label: "Tags associés",
+                  <div class="form-group col-3 mb-0">
+                  <h5><%= f.input :tags, collection: Tag.all, as: :check_boxes,
+                            label: "Boojee tag ?",
                             include_hidden: false,
                             input_html: { class: "tag-selector" },
-                            item_wrapper_class: 'tag-item' %>
+                            item_wrapper_class: 'tag-item' %></h5>
                   </div>
                   <div class="form-group col-1">
-                  <%= f.input :promotions, collection: [["Aujourd'hui", "today"], ["Demain", "tomorrow"]] , as: :check_boxes,
-                            label: "Promotions",
+                  <h5><%= f.input :promotions, collection: [["Aujourd'hui", "today"], ["Demain", "tomorrow"], ["Toutes", "all"]] , as: :check_boxes,
+                            label: "Quand ?",
                             include_hidden: false,
                             input_html: { class: "tag-selector-date" },
-                            item_wrapper_class: 'tag-item' %>
+                            item_wrapper_class: 'tag-item' %></h5>
                   </div>
                   <div class="form-group col-1 ">
                   <%= f.submit "Rechercher", class: "button" %>
@@ -44,7 +44,7 @@
 
 
 <div class="container text-center">
- <div class="row">
+  <div class="row">
     <div class="col col-lg-6">
 
       <% @bars.each do |bar| %>
@@ -86,9 +86,11 @@
               </div>
             </div>
 
-            <div class="tags-style-bar">
+            <div class="tag-de-tag">
               <% bar.bar_tags.each do |bar_tag| %>
-              <h6 ><%= bar_tag.tag.name.capitalize %></h6>
+                <div class="tags-style-bar">
+                  <h6 ><%= bar_tag.tag.name.capitalize %></h6>
+                </div>
               <% end %>
             </div>
 
@@ -100,7 +102,7 @@
             </div>
 
             <div class="bar-card-flex-promo">
-              <% bar.promotions.where("promotions.end_date > ?", Date.today).order_by_start_asc.limit(3).each do |promo| %>
+              <% bar.promotions.where.not(name: "🥳 Avantage fidélité -50% lors de votre prochaine visite!").where("promotions.end_date > ?", Date.today).order_by_start_asc.limit(3).each do |promo| %>
               <p class="promo-card-index"><%= promo.name %></p>
               <% end %>
             </div>

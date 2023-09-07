@@ -1,82 +1,97 @@
 <div class="bar-card-show p-3 m-3">
-<div class="container">
-  <div class="row mb-3">
-    <h1><%= @bar.name %></h1>
-    <p><%= @bar.address %></p>
-
-    <div id="carouselExampleIndicators" class="carousel slide col-4" data-bs-ride="carousel">
-      <div class="carousel-inner">
-       <% @bar.photos.each_with_index do |photo, index| %>
-  <div class="carousel-item <%= "active" if index == 0 %>">
-    <%= cl_image_tag photo.key, width: 300, crop: "pad", class: 'd-block w-100 rounded-2', style: 'height: 300px; object-fit: cover;' %>
-  </div>
-<% end %>
+  <div class="container">
+    <div class="row mb-3">
+      <div class="row">
+        <div class="col-6" >
+          <h1><%= @bar.name %></h1>
+          <p><%= @bar.address %></p>
+        </div>
+        <div class="col-6">
+          <div class="booking-status">
+            <% if  @bar.bookings.used.where(user_id:current_user).size < 3  %>
+              <p> Validez <em> <%= 3 - @bar.bookings.used.where(user_id:current_user).size %> QR Code </em> pour débloquer un cadeau chez <%= @bar.name %> </p>
+              <progress value="<%= @bar.bookings.used.where(user_id:current_user).size  %>" max="3"></progress>
+              <% else %>
+              <p>🥳 Bravo vous avez débloqué 1 cadeau </p>
+              <p>Découvrez le dans votre espace <%= link_to "mes réservations", bookings_path %></p>
+              <% end %>
+          </div>
+        </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-    <div class="col-8">
-      <ul><h3>Informations</h3>
-          <% @bar.tags.each do |tags| %>
-          <h6 class= "tag-show" ><%= tags.name %></h6>
+
+      <div id="carouselExampleIndicators" class="carousel slide col-4" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <% @bar.photos.each_with_index do |photo, index| %>
+            <div class="carousel-item <%= "active" if index == 0 %>">
+              <%= cl_image_tag photo.key, width: 300, crop: "pad", class: 'd-block w-100 rounded-2', style: 'height: 300px; object-fit: cover;' %>
+            </div>
           <% end %>
-        <li><strong>Description :</strong> <%= @bar.description %></li>
-        <li><strong>Prix moyen :</strong> <%= @bar.average_price %> €</li>
-        <li><strong>Heures d'ouverture :</strong> <%= @bar.open_at.strftime("%H:%M") %> - <%= @bar.close_at.strftime("%H:%M") %></li>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div class="col-8">
+        <ul><h3>Informations</h3>
+            <% @bar.tags.each do |tags| %>
+            <h6 class= "tag-show" ><%= tags.name %></h6>
+            <% end %>
+          <li><strong>Description :</strong> <%= @bar.description %></li>
+          <li><strong>Prix moyen :</strong> <%= @bar.average_price %> €</li>
+          <li><strong>Heures d'ouverture :</strong> <%= @bar.open_at.strftime("%H:%M") %> - <%= @bar.close_at.strftime("%H:%M") %></li>
+        </ul>
+      </div>
+    </div>
+
+
+  <div class="bar-info">
+    <h3 class="mt-2">Promotions en cours</h3>
+    <div class="d-flex justify-content-center">
+      <% if @promos.empty? %>
+        <div class="promo-card m-3">
+        <p>Malheuresement ce bar ne propose pas de promotion en ce moment</p>
+        <h4>😭</h4>
+        </div>
+      <% else %>
+        <% @promos.where.not(name: "🥳 Avantage fidélité -50% lors de votre prochaine visite!").each do |promo| %>
+          <div class="promo-card m-3">
+            <h6><%= promo.name %></h6>
+            <p><i class="fa-solid fa-gift" style="color: #ec407a;"></i> <%= promo.offer %></p>
+            <p>Valable du : <%= promo.start_date.strftime("%d/%m/%y") %> au : <%= promo.end_date.strftime("%d/%m/%y") %></p>
+            <div class="mt-auto d-flex justify-content-center">
+              <%= button_to 'Réserver', promotion_bookings_path(promo), method: :post, class: 'button' %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+    <div class="bar-info">
+      <h3 class="mb-3 mt-2" >Commentaires</h3>
+      <% if @bar.reviews.empty? %>
+        <div class="d-flex justify-content-center align-items-center p-3">
+          <div class="promo-card mx-3 d-flex justify-content-center">
+            <p>Ce bar n'as pas encore de commentaire</p>
+            <p>Laisserez-vous le prochain ?</p>
+          </div>
+        </div>
+      <% else %>
+      <ul class="review-list">
+        <% @bar.reviews.each do |review| %>
+          <li class="review-item">
+            <p><em><%= review.booking.user.first_name.capitalize %> le <%= review.created_at.strftime("%d/%m/%y") %></em></p>
+            <p class="rating"><strong>Évaluation :</strong> <%=  "⭐️" * review.rating.to_i %></p>
+            <p><%= review.content %></p>
+          </li>
+        <% end %>
+        <% end %>
       </ul>
     </div>
   </div>
-
-
-<div class="bar-info">
-  <h3 class="mt-2">Promotions en cours</h3>
-  <div class="d-flex justify-content-center">
-    <% if @promos.empty? %>
-      <div class="promo-card m-3">
-      <p>Malheuresement ce bar ne propose pas de promotion en ce moment</p>
-      <h4>😭</h4>
-      </div>
-    <% else %>
-      <% @promos.each do |promo| %>
-        <div class="promo-card m-3">
-          <h6><%= promo.name %></h6>
-          <p><i class="fa-solid fa-gift" style="color: #ec407a;"></i> <%= promo.offer %></p>
-          <p>Valable du : <%= promo.start_date.strftime("%d/%m/%y") %> au : <%= promo.end_date.strftime("%d/%m/%y") %></p>
-          <div class="mt-auto d-flex justify-content-center">
-            <%= button_to 'Réserver', promotion_bookings_path(promo), method: :post, class: 'button' %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-</div>
-
-  <div class="bar-info">
-    <h3 class="mb-3 mt-2" >Commentaires</h3>
-     <% if @bar.reviews.empty? %>
-      <div class="d-flex justify-content-center align-items-center p-3">
-        <div class="promo-card mx-3 d-flex justify-content-center">
-          <p>Ce bar n'as pas encore de commentaire</p>
-          <p>Laisserez-vous le prochain ?</p>
-        </div>
-      </div>
-    <% else %>
-    <ul class="review-list">
-      <% @bar.reviews.each do |review| %>
-        <li class="review-item">
-          <p><em><%= review.booking.user.first_name.capitalize %> le <%= review.created_at.strftime("%d/%m/%y") %></em></p>
-          <p class="rating"><strong>Évaluation :</strong> <%= review.rating %> / 5</p>
-          <p><%= review.content %></p>
-        </li>
-      <% end %>
-      <% end %>
-    </ul>
-  </div>
-</div>
 </div>
