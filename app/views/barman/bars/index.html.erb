@@ -9,9 +9,10 @@
         <div class="modal-content">
           <div class="modal-header">
             <h3 class="modal-title" id="exampleModalLabel">Nouveau bar</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-          <div class="d-flex justify-content-center w-100">
+          <div class="d-flex justify-content-center w-100 mb-3">
 
           <%= simple_form_for [:barman, @bar], html: { class: "formulary-card form-width", data: { controller: "datepicker" }} do |f| %>
 
@@ -44,10 +45,6 @@
 
           </div>
 
-
-          <div class="modal-footer">
-            <button type="button" class="button" data-bs-dismiss="modal">Fermer</button>
-          </div>
           </div>
         </div>
       </div>
