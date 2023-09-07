@@ -2,10 +2,21 @@
   display: flex;
   justify-content: center;
   background-color: white;
-  margin-top: 2em;
+  // margin-top: 2em;
   border: solid ;
   border-color: black;
   padding: 20px;
   box-shadow: 12px 12px 2px 1px rgba(67, 145, 209, 1);
   height: 80%;
+}
+
+.custom-modal-header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: end;
+  padding: var(--bs-modal-header-padding);
+  border-bottom: var(--bs-modal-header-border-width) solid var(--bs-modal-header-border-color);
+  border-top-left-radius: var(--bs-modal-inner-border-radius);
+  border-top-right-radius: var(--bs-modal-inner-border-radius);
 }
