@@ -77,11 +77,12 @@
 ​
     <div class="bar-info row justify-content-around">
       <h3 class="mt-2">Mes promotions en cours et à venir</h3>
-      <div>
+      <div style="border-bottom: solid 1px #ec407a;">
         <h6 class= "select-show" ><%= link_to 'en cours / à venir', :select => "upcoming" %></h6>
         <h6 class= "select-show" ><%= link_to 'passées', :select => "past" %></h6>
       </div>
         <div class="d-flex justify-content-center">
+            <h3 class="mt-2" style="flex-shrink: 0; width: 100%; max-width: 100%; padding-right: calc(var(--bs-gutter-x) * .5);">Calendrier des événements</h3>
             <% @promos.where.not(name: "🥳 Avantage fidélité -50% lors de votre prochaine visite!").each do |promo| %>
                 <div class="promo-card m-3">
                   <div class="row">
