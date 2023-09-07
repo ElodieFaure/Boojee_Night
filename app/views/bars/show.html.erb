@@ -6,14 +6,15 @@
           <h1><%= @bar.name %></h1>
           <p><%= @bar.address %></p>
         </div>
-        <div class="col-6">
+
+      <div class="col-6">
           <div class="booking-status">
             <% if  @bar.bookings.used.where(user_id:current_user).size < 3  %>
-              <p> Validez <em> <%= 3 - @bar.bookings.used.where(user_id:current_user).size %> QR Code </em> pour débloquer un cadeau chez <%= @bar.name %> </p>
-              <progress value="<%= @bar.bookings.used.where(user_id:current_user).size  %>" max="3"></progress>
+              <h5> Validez encore  <em> <%= 3 - @bar.bookings.used.where(user_id:current_user).size %> QR Code </em>  pour débloquer un cadeau <br> chez <%= @bar.name %> ! </H5>
+              <progress value="<%= @bar.bookings.used.where(user_id:current_user).size  %>" max="3"></progress> <span class="titi"> <%=  @bar.bookings.used.where(user_id:current_user).size %>/ 3</span>
               <% else %>
-              <p>🥳 Bravo vous avez débloqué 1 cadeau </p>
-              <p>Découvrez le dans votre espace <%= link_to "mes réservations", bookings_path %></p>
+              <H5>🥳 Bravo vous avez débloqué 1 cadeau </H5>
+              <H5>Découvrez le dans votre espace <%= link_to "mes réservations", bookings_path %></H5>
               <% end %>
           </div>
         </div>

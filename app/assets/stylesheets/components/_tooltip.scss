@@ -30,14 +30,19 @@
 progress {
   width: 230px;
   height: 20px;
-  border-radius: 5px;
-  border: 1px solid #ec407a;
+  border-radius: 3px;
+  border: 1px solid white;
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 progress::-webkit-progress-bar {
   background-color: #eaa4bc;
+  border-radius: 3px 0px 0px 3px;
 }
 progress::-webkit-progress-value {
   background-color: #ec407a;
+
+  border-radius: 0px 3px 3px 0px;
 }
 .info {
   top: 10px;
@@ -50,4 +55,10 @@ progress::-webkit-progress-value {
   top: 10px;
   right: 18px;
 
+}
+
+.titi {
+  position: absolute;
+  right: 108px;
+  bottom: 15px;
 }

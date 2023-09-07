@@ -1,6 +1,6 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/5490965/pexels-photo-5490965.jpeg?cs=srgb&dl=pexels-rachel-claire-5490965.jpg&fm=jpg);">
   <div class="container">
-    <h1>Boojee Night, partenaire de vos sorties.</h1>
+    <h1>Boojee Night, partenaire de vos sorties</h1>
     <p>Trouvez les meilleures offres autour de vous </p>
       <div class="container">
         <div class="r">
@@ -97,9 +97,16 @@
 
 
             <div class="address-avg-price">
-              <p class="address"><%= bar.address %></p>
-              <p class="average-price">Prix moyen: <%= bar.average_price %>€</p>
-            </div>
+          <p class="address"><%= bar.address %></p>
+          <p class="average-price">Prix moyen:
+          <% if bar.average_price >= 0 && bar.average_price < 8 %>
+            €
+          <% elsif bar.average_price >= 8 && bar.average_price < 15 %>
+            € €
+          <% else %>
+            € € €
+          <% end %>
+          </div>
 
             <div class="bar-card-flex-promo">
               <% bar.promotions.where.not(name: "🥳 Avantage fidélité -50% lors de votre prochaine visite!").where("promotions.end_date > ?", Date.today).order_by_start_asc.limit(3).each do |promo| %>

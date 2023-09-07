@@ -15,11 +15,18 @@
 }
 
 .nav-link {
-color: white;
+  color: white;
 }
+
+.nav-link:hover {
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.845);
+}
+
 
 .navbar-nav {
   text-align: right;
+  color: white;
 }
 
 .sticky-nav {
