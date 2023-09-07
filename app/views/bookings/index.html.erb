@@ -74,20 +74,33 @@
             </td>
           <% end %>
         </tr>
-<div class="modal fade" id="qr-modal-<%= booking.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="custom-modal-body">
-      <div class="js-notificaction-qr" data-booking-subscription-target="notification">
-        <div class="custom-qr-code-class"><%= @qr_codes[index].html_safe %></div>
-      </div>
-        <%= link_to "close", bookings_path %>
-          <%# <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">Close</button> %>
-        <%# <% end %>
-      </div>
-    </div>
-</div>
+
+    <div class="modal fade" id="qr-modal-<%= booking.id%>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <%= link_to bookings_path(reload: true), style: "z-index: 999999" do %>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <% end %>
+
+              </div>
+              <div class="custom-modal-body">
+                <div class="js-notificaction-qr" data-booking-subscription-target="notification">
+                  <div class="custom-qr-code-class"><%= @qr_codes[index].html_safe %></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       <% end %>
     </tbody>
   </table>
 </div>
 </div>
+
+<% if params["reload"] %>
+  <script>
+    window.location = "/bookings"
+  </script>
+<% end %>
