@@ -24,7 +24,7 @@
         <tr>
           <th scope="row"></th>
 
-          <td><%= booking.promotion.name %> <%= booking.id %></td>
+          <td><%= booking.promotion.name %></td>
           <td><h5><%= link_to booking.promotion.bar.name, bar_path(booking.promotion.bar), class: "text-decoration-none", style:"color: #ec407a;" %></h5></td>
           <td>du <%= booking.promotion.start_date.strftime("%d %b").downcase%>  au <%= booking.promotion.end_date.strftime("%d %b").downcase%></td>
             <% if booking.used? %>
@@ -55,9 +55,23 @@
               </td>
               <td><%= booking.qr_progress_labels[booking.qr_progress.to_sym] %></td>
             <td class="text-center">
-              <%= link_to booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer cette promotion?"} do %>
-                <%= icon('fa-solid fa-xl', 'trash-can', style: 'color: #eb417a')%></i>
-              <% end %>
+
+              <span data-bs-toggle="modal" data-bs-target="#destroy-promotion"><%= icon('fa-solid fa-xl', 'trash-can', style: 'color: #eb417a')%></i></span>
+
+              <div class="modal fade" id="destroy-promotion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="exampleModalLabel">Êtes-vous certain de vouloir supprimer cette promotion?</h4>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="button" data-bs-dismiss="modal">NON</button>
+                      <%= link_to "OUI", booking_path(booking), data: {turbo_method: :delete}, class:"button" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </td>
             <% end %>
 
@@ -79,7 +93,7 @@
 
     <div class="modal fade" id="qr-modal-<%= booking.id%>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="custom-modal-header">
                 <%= link_to bookings_path(reload: true) do %>
