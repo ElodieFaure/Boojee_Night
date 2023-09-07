@@ -14,7 +14,7 @@
     <%= favicon_link_tag "favicon.png", rel: "icon", type: "image/png" %>
   </head>
 
-  <body>
+  <body <%= current_user ? "data-controller=booking-subscription data-booking-subscription-user-id-value= #{current_user.id}" : "" %>>
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
     <div class="content"><%= yield %></div>
